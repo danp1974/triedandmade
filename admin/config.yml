@@ -1,0 +1,87 @@
+backend:
+  name: github
+  repo: danp1974/triedandmade
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "guides"
+    label: "Guides"
+    label_singular: "Guide"
+    folder: "content/guides"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "Laser Engraving"
+          - "3D Printing"
+          - "CNC Routing"
+          - "Machining"
+          - "Electronics"
+          - "General Fixes"
+      - label: "Short Description"
+        name: "description"
+        widget: "string"
+        hint: "One sentence summary shown on the guides list page"
+      - label: "Tags"
+        name: "tags"
+        widget: "string"
+        required: false
+        hint: "e.g. EggBot, LightBurn, firmware"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+
+  - name: "products"
+    label: "Shop Products"
+    label_singular: "Product"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Product Name"
+        name: "title"
+        widget: "string"
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "SVG Files"
+          - "STL Files"
+          - "PDF Guides"
+          - "Settings Packs"
+          - "LightBurn Files"
+      - label: "Price (USD)"
+        name: "price"
+        widget: "number"
+        value_type: "float"
+        min: 0.99
+      - label: "Short Description"
+        name: "description"
+        widget: "string"
+        hint: "One line shown on the shop grid"
+      - label: "File Type"
+        name: "filetype"
+        widget: "string"
+        hint: "e.g. .svg, .stl, .pdf, .lbrn"
+        required: false
+      - label: "Purchase / Download Link"
+        name: "download_url"
+        widget: "string"
+        required: false
+        hint: "Gumroad or other link — leave blank if using email"
+      - label: "Product Details"
+        name: "body"
+        widget: "markdown"
+        required: false

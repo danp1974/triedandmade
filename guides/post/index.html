@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide — TriedAndMade</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.post-wrap{max-width:780px;margin:0 auto;padding:50px 2rem 80px}
+.post-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);margin-bottom:2rem;transition:color 0.2s}
+.post-back:hover{color:var(--amber)}
+.post-back::before{content:'←'}
+.post-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.post-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;margin-bottom:16px}
+.post-meta{font-size:13px;color:var(--text-dim);margin-bottom:2rem;display:flex;gap:1.5rem}
+.post-desc{font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-body{font-size:16px;line-height:1.8;color:var(--text)}
+.post-body h1,.post-body h2,.post-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;margin:2rem 0 0.75rem;color:var(--text)}
+.post-body h1{font-size:32px}
+.post-body h2{font-size:26px}
+.post-body h3{font-size:20px}
+.post-body p{margin-bottom:1.25rem}
+.post-body ul,.post-body ol{margin:0 0 1.25rem 1.5rem}
+.post-body li{margin-bottom:6px}
+.post-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:13px;font-family:monospace;color:var(--amber-light)}
+.post-body pre{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;overflow-x:auto}
+.post-body pre code{background:none;padding:0;color:var(--text)}
+.post-body blockquote{border-left:3px solid var(--amber);padding-left:1.25rem;margin-bottom:1.25rem;color:var(--text-muted);font-style:italic}
+.post-body img{max-width:100%;border-radius:8px;margin:1rem 0;border:1px solid var(--border)}
+.post-body a{color:var(--amber);text-decoration:underline;text-decoration-color:var(--amber-dim)}
+.post-body hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.post-body strong{color:var(--text);font-weight:600}
+.post-nav{display:flex;justify-content:flex-start;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.loading{text-align:center;padding:4rem 2rem;color:var(--text-muted)}
+.error{text-align:center;padding:4rem 2rem;color:var(--text-muted)}
+.error h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;margin-bottom:1rem}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/" style="color:var(--amber)">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+</nav>
+
+<div class="post-wrap" id="post-wrap">
+  <div class="loading">Loading guide...</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="/" class="logo">Tried<span>&</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li><li><a href="/guides/?cat=Machining">Machining</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/about/">About</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 TriedAndMade.com</p><span class="footer-email">info@triedandmade.com</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script>
+const REPO='danp1974/triedandmade';
+const RAW='https://raw.githubusercontent.com/'+REPO+'/main';
+
+function parseFrontmatter(text){
+  const match=text.match(/^---\n([\s\S]*?)\n---/);
+  if(!match)return{data:{},content:text};
+  const data={};
+  match[1].split('\n').forEach(line=>{const[k,...v]=line.split(':');if(k&&v.length)data[k.trim()]=v.join(':').trim().replace(/^["']|["']$/g,'')});
+  return{data,content:text.slice(match[0].length).trim()};
+}
+
+async function loadPost(){
+  const params=new URLSearchParams(window.location.search);
+  const slug=params.get('slug');
+  const el=document.getElementById('post-wrap');
+  if(!slug){el.innerHTML='<div class="error"><h2>Guide not found</h2><p>No guide specified.</p><a href="/guides/" class="btn-primary" style="margin-top:1rem;display:inline-block">Back to Guides</a></div>';return;}
+  try{
+    const res=await fetch(RAW+'/content/guides/'+slug+'.md');
+    if(!res.ok)throw new Error();
+    const text=await res.text();
+    const{data,content}=parseFrontmatter(text);
+    document.title=(data.title||slug)+' — TriedAndMade';
+    el.innerHTML=`
+      <a href="/guides/" class="post-back">Back to all guides</a>
+      <div class="post-tag">${data.category||'Guide'}</div>
+      <h1 class="post-title">${data.title||slug}</h1>
+      <div class="post-meta">
+        <span>${data.date?new Date(data.date).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}):''}</span>
+        ${data.tags?'<span>'+data.tags+'</span>':''}
+      </div>
+      ${data.description?'<p class="post-desc">'+data.description+'</p>':''}
+      <div class="post-body">${marked.parse(content)}</div>
+      <div class="post-nav"><a href="/guides/" class="btn-secondary">← Back to all guides</a></div>
+    `;
+  }catch(e){
+    el.innerHTML='<div class="error"><h2>Guide not found</h2><p>This guide may have moved or doesn\'t exist yet.</p><a href="/guides/" class="btn-primary" style="margin-top:1rem;display:inline-block">Back to Guides</a></div>';
+  }
+}
+
+loadPost();
+</script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TriedAndMade — Real Fixes. Real Experience. No Circles.</title>
+<meta name="description" content="From machining to laser cutting to 3D printing — if I burned the hours figuring it out, you'll find the answer here. Straight talk, no runaround.">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.hero{padding:80px 2rem 70px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--amber)}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,6vw,72px);font-weight:800;line-height:1.0;letter-spacing:-0.5px;margin-bottom:1.25rem}
+.hero h1 em{color:var(--amber);font-style:normal}
+.hero-sub{font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:2rem;max-width:480px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem}
+.stat-card .num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;color:var(--amber);line-height:1;margin-bottom:4px}
+.stat-card .label{font-size:13px;color:var(--text-muted)}
+.stat-card.accent{grid-column:1/-1;border-color:var(--amber-dim);display:flex;align-items:center;gap:1rem}
+.stat-card.accent .icon{font-size:32px}
+.stat-card.accent p{font-size:14px;color:var(--text-muted);margin-top:2px}
+.divider{border:none;border-top:1px solid var(--border)}
+.two-paths{max-width:1100px;margin:0 auto;padding:60px 2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.path-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;transition:border-color 0.2s,transform 0.2s;display:block}
+.path-card:hover{border-color:var(--amber-dim);transform:translateY(-2px)}
+.path-icon{width:48px;height:48px;border-radius:8px;background:rgba(232,146,10,0.12);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.25rem;color:var(--amber)}
+.path-card h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;margin-bottom:8px}
+.path-card p{font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:1.25rem}
+.path-link{font-size:13px;font-weight:600;color:var(--amber);display:flex;align-items:center;gap:6px}
+.path-link::after{content:'→'}
+.section-header{max-width:1100px;margin:0 auto;padding:50px 2rem 24px;display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--border)}
+.section-header h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700}
+.section-header a{font-size:13px;color:var(--amber);font-weight:500}
+.guides-grid{max-width:1100px;margin:0 auto;padding:0 2rem 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.guide-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color 0.2s;display:block}
+.guide-card:hover{border-color:var(--amber-dim)}
+.guide-thumb{height:120px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--text-dim);border-bottom:1px solid var(--border)}
+.guide-body{padding:1.25rem}
+.guide-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.guide-card h3{font-size:15px;font-weight:600;line-height:1.4;margin-bottom:8px}
+.guide-card p{font-size:13px;color:var(--text-muted);line-height:1.5}
+.guide-footer{padding:0.75rem 1.25rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-dim);display:flex;justify-content:space-between}
+.product-strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:50px 2rem}
+.product-inner{max-width:1100px;margin:0 auto}
+.product-inner h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;margin-bottom:4px}
+.product-inner .sub{font-size:14px;color:var(--text-muted);margin-bottom:1.5rem}
+.products-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.product-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color 0.2s;display:block}
+.product-card:hover{border-color:var(--amber-dim)}
+.product-card .p-icon{font-size:28px;margin-bottom:10px}
+.product-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.product-card .p-desc{font-size:12px;color:var(--text-muted);margin-bottom:12px}
+.product-card .price{font-size:18px;font-weight:700;color:var(--amber);font-family:'Barlow Condensed',sans-serif}
+.about-strip{max-width:1100px;margin:0 auto;padding:60px 2rem;display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:center}
+.about-badge{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;text-align:center}
+.about-badge .avatar{width:80px;height:80px;border-radius:50%;background:rgba(232,146,10,0.15);border:2px solid var(--amber-dim);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 1rem}
+.about-badge .name{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700}
+.about-badge .title{font-size:12px;color:var(--text-muted);margin-top:4px}
+.cred-list{list-style:none;margin-top:1rem;text-align:left}
+.cred-list li{font-size:12px;color:var(--text-muted);padding:4px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.cred-list li::before{content:'▸';color:var(--amber);font-size:10px}
+.about-text h2{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;margin-bottom:1rem}
+.about-text p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:1rem}
+.loading{text-align:center;padding:2rem;color:var(--text-muted);font-size:14px}
+@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-stats{display:none}.two-paths{grid-template-columns:1fr}.guides-grid{grid-template-columns:1fr}.products-row{grid-template-columns:1fr 1fr}.about-strip{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Maker Guides &amp; Digital Files</div>
+    <h1>Real Fixes.<br><em>Real</em> Experience.<br>No Circles.</h1>
+    <p class="hero-sub">From machining to laser cutting to 3D printing — if I burned the hours figuring it out, you'll find the answer here. Straight talk, no runaround.</p>
+    <div class="hero-actions">
+      <a href="/guides/" class="btn-primary">Find a Fix</a>
+      <a href="/shop/" class="btn-secondary">Browse the Shop</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card"><div class="num">40+</div><div class="label">Years of hands-on experience</div></div>
+    <div class="stat-card"><div class="num">100%</div><div class="label">Actually tested by me</div></div>
+    <div class="stat-card accent"><div class="icon">🔧</div><div><strong>No affiliate fluff.</strong><p>Every guide is based on real projects I built, broke, and fixed myself.</p></div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="two-paths">
+  <a href="/guides/" class="path-card">
+    <div class="path-icon">📋</div>
+    <h2>Troubleshooting Guides</h2>
+    <p>Step-by-step fixes for laser engravers, 3D printers, CNC machines, and more. Written by someone who actually went through the pain.</p>
+    <span class="path-link">Browse all guides</span>
+  </a>
+  <a href="/shop/" class="path-card">
+    <div class="path-icon">📁</div>
+    <h2>Ready-to-Use Files</h2>
+    <p>LightBurn SVG packs, 3D print STLs, CNC toolpaths, and settings libraries. Download and get straight to work.</p>
+    <span class="path-link">Browse the shop</span>
+  </a>
+</section>
+
+<div class="section-header">
+  <h2>Latest Guides</h2>
+  <a href="/guides/">View all →</a>
+</div>
+<div class="guides-grid" id="latest-guides">
+  <div class="loading">Loading guides...</div>
+</div>
+
+<section class="product-strip">
+  <div class="product-inner">
+    <h2>Downloads &amp; Files</h2>
+    <p class="sub">Ready-to-run files tested on real machines. Buy once, use forever.</p>
+    <div class="products-row" id="latest-products">
+      <div class="loading">Loading products...</div>
+    </div>
+  </div>
+</section>
+
+<section class="about-strip">
+  <div class="about-badge">
+    <div class="avatar">👷</div>
+    <div class="name">Danny</div>
+    <div class="title">Builder. Fixer. Maker.</div>
+    <ul class="cred-list">
+      <li>A/C Contractor</li>
+      <li>Utility Grid Operator</li>
+      <li>Machinist</li>
+      <li>Laser Engraving</li>
+      <li>3D Printing</li>
+      <li>CNC Routing</li>
+    </ul>
+  </div>
+  <div class="about-text">
+    <h2>Why I Built This Site</h2>
+    <p>I made this site mostly to help out others that are trying to repair or make something work. I've had a lot of experiences — from machining and air conditioning to utility grid systems and beyond.</p>
+    <p>I've put in a lot of frustrating hours of research where the internet just ran me in circles. So I built this to provide the most direct and simplest path to actually making your project work.</p>
+    <a href="/about/" class="btn-secondary" style="display:inline-block;margin-top:0.5rem">Read more about me →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo">Tried<span>&</span>Made</a>
+      <p>Real fixes for real makers. No fluff, no circles — just what works.</p>
+    </div>
+    <div class="footer-col"><h4>Guides</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li><li><a href="/guides/?cat=Machining">Machining</a></li></ul></div>
+    <div class="footer-col"><h4>Shop</h4><ul><li><a href="/shop/?cat=SVG Files">SVG Files</a></li><li><a href="/shop/?cat=STL Files">STL Files</a></li><li><a href="/shop/?cat=PDF Guides">PDF Guides</a></li><li><a href="/shop/?cat=Settings Packs">Settings Packs</a></li></ul></div>
+    <div class="footer-col"><h4>Info</h4><ul><li><a href="/about/">About</a></li><li><a href="mailto:info@triedandmade.com">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TriedAndMade.com — All rights reserved</p>
+    <span class="footer-email">info@triedandmade.com</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script>
+const REPO = 'danp1974/triedandmade';
+const RAW = 'https://raw.githubusercontent.com/' + REPO + '/main';
+const API = 'https://api.github.com/repos/' + REPO + '/contents';
+
+function parseFrontmatter(text) {
+  const match = text.match(/^---\n([\s\S]*?)\n---/);
+  if (!match) return { data: {}, content: text };
+  const data = {};
+  match[1].split('\n').forEach(line => {
+    const [k, ...v] = line.split(':');
+    if (k && v.length) data[k.trim()] = v.join(':').trim().replace(/^["']|["']$/g, '');
+  });
+  return { data, content: text.slice(match[0].length).trim() };
+}
+
+const categoryIcons = {
+  'Laser Engraving': '🔆', '3D Printing': '🖨️', 'CNC Routing': '⚙️',
+  'Machining': '🔩', 'Electronics': '⚡', 'General Fixes': '🔧'
+};
+
+async function loadLatestGuides() {
+  const el = document.getElementById('latest-guides');
+  try {
+    const res = await fetch(API + '/content/guides');
+    if (!res.ok) throw new Error();
+    const files = await res.json();
+    const mdFiles = files.filter(f => f.name.endsWith('.md')).slice(-3).reverse();
+    if (!mdFiles.length) { el.innerHTML = '<div class="loading">No guides yet — check back soon!</div>'; return; }
+    const guides = await Promise.all(mdFiles.map(async f => {
+      const r = await fetch(RAW + '/content/guides/' + f.name);
+      const text = await r.text();
+      return { slug: f.name.replace('.md',''), ...parseFrontmatter(text) };
+    }));
+    el.innerHTML = guides.map(g => `
+      <a href="/guides/post/?slug=${g.slug}" class="guide-card">
+        <div class="guide-thumb">${categoryIcons[g.data.category] || '📋'}</div>
+        <div class="guide-body">
+          <div class="guide-tag">${g.data.category || 'Guide'}</div>
+          <h3>${g.data.title || g.slug}</h3>
+          <p>${g.data.description || ''}</p>
+        </div>
+        <div class="guide-footer"><span>${g.data.category || ''}</span><span>${g.data.date ? new Date(g.data.date).toLocaleDateString() : ''}</span></div>
+      </a>`).join('');
+  } catch(e) {
+    el.innerHTML = '<div class="loading">Guides coming soon!</div>';
+  }
+}
+
+async function loadLatestProducts() {
+  const el = document.getElementById('latest-products');
+  try {
+    const res = await fetch(API + '/content/products');
+    if (!res.ok) throw new Error();
+    const files = await res.json();
+    const mdFiles = files.filter(f => f.name.endsWith('.md')).slice(0,4);
+    if (!mdFiles.length) { el.innerHTML = '<div class="loading">Products coming soon!</div>'; return; }
+    const products = await Promise.all(mdFiles.map(async f => {
+      const r = await fetch(RAW + '/content/products/' + f.name);
+      const text = await r.text();
+      return { slug: f.name.replace('.md',''), ...parseFrontmatter(text) };
+    }));
+    el.innerHTML = products.map(p => `
+      <a href="/shop/#${p.slug}" class="product-card">
+        <div class="p-icon">${p.data.category === 'SVG Files' ? '✂️' : p.data.category === 'STL Files' ? '📦' : p.data.category === 'PDF Guides' ? '📄' : '⚙️'}</div>
+        <h4>${p.data.title || p.slug}</h4>
+        <p class="p-desc">${p.data.description || ''}</p>
+        <div class="price">$${p.data.price || ''}</div>
+      </a>`).join('');
+  } catch(e) {
+    el.innerHTML = '<div class="loading">Shop coming soon!</div>';
+  }
+}
+
+loadLatestGuides();
+loadLatestProducts();
+</script>
+</body>
+</html>

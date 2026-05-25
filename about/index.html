@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — TriedAndMade</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.about-wrap{max-width:900px;margin:0 auto;padding:50px 2rem 80px;display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start}
+.about-sidebar{position:sticky;top:80px}
+.about-badge{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;text-align:center}
+.avatar{width:100px;height:100px;border-radius:50%;background:rgba(232,146,10,0.15);border:2px solid var(--amber-dim);display:flex;align-items:center;justify-content:center;font-size:44px;margin:0 auto 1rem}
+.about-badge .name{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700}
+.about-badge .title{font-size:13px;color:var(--text-muted);margin-top:4px;margin-bottom:1.5rem}
+.cred-list{list-style:none;text-align:left}
+.cred-list li{font-size:13px;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.cred-list li:last-child{border-bottom:none}
+.cred-list li::before{content:'▸';color:var(--amber);font-size:10px;flex-shrink:0}
+.contact-card{background:var(--surface);border:1px solid var(--amber-dim);border-radius:10px;padding:1.25rem;margin-top:1rem;text-align:center}
+.contact-card p{font-size:13px;color:var(--text-muted);margin-bottom:10px}
+.contact-card a{display:block;font-size:13px;color:var(--amber);font-weight:500;word-break:break-all}
+.about-content h2{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;margin:2rem 0 1rem;color:var(--text)}
+.about-content h2:first-child{margin-top:0}
+.about-content p{font-size:16px;color:var(--text-muted);line-height:1.8;margin-bottom:1.25rem}
+.machine-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.25rem 0}
+.machine-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.machine-card .m-icon{font-size:20px;margin-bottom:6px}
+.machine-card h4{font-size:14px;font-weight:600;margin-bottom:2px}
+.machine-card p{font-size:12px;color:var(--text-muted);margin:0}
+@media(max-width:768px){.about-wrap{grid-template-columns:1fr}.about-sidebar{position:static}.machine-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/" style="color:var(--amber)">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+</nav>
+
+<div class="about-wrap">
+  <div class="about-sidebar">
+    <div class="about-badge">
+      <div class="avatar">👷</div>
+      <div class="name">Danny</div>
+      <div class="title">Builder. Fixer. Maker.</div>
+      <ul class="cred-list">
+        <li>A/C Contractor</li>
+        <li>Utility Grid System Operator</li>
+        <li>Machinist</li>
+        <li>Laser Engraving</li>
+        <li>3D Printing</li>
+        <li>CNC Routing</li>
+        <li>Electronics</li>
+      </ul>
+    </div>
+    <div class="contact-card">
+      <p>Got a question or topic suggestion?</p>
+      <a href="mailto:info@triedandmade.com">info@triedandmade.com</a>
+    </div>
+  </div>
+
+  <div class="about-content">
+    <h2>Why I Built This Site</h2>
+    <p>I made this site mostly to help out others that are trying to repair or make something work. I have had lots of experiences from machining, air conditioning contracting, utility grid system operating, and just being a plain old person who never wants to stop learning how something is made or just to make it myself.</p>
+    <p>I have put in a lot of frustrating hours of research on several different projects where the internet just ran me through circles and I would still not find the answers I was looking for. So I put this site together to provide what I think are the most direct and simplest ways to actually build or make work whatever you're working on.</p>
+
+    <h2>My Shop</h2>
+    <p>I run a well-equipped home shop with the tools to actually test everything I write about. If it's on this site, I've personally used it, broken it, fixed it, and figured it out.</p>
+    <div class="machine-grid">
+      <div class="machine-card"><div class="m-icon">🔆</div><h4>Atezr P20 Pro</h4><p>Laser engraver</p></div>
+      <div class="machine-card"><div class="m-icon">🖨️</div><h4>Ender 5 Plus</h4><p>3D printer — direct drive Dragonfly</p></div>
+      <div class="machine-card"><div class="m-icon">⚙️</div><h4>3018 CNC Pro Max</h4><p>CNC router</p></div>
+      <div class="machine-card"><div class="m-icon">🔩</div><h4>Benchtop Mill</h4><p>RCOG-25V mill</p></div>
+      <div class="machine-card"><div class="m-icon">🔧</div><h4>Benchtop Lathe</h4><p>Creworks 9x24</p></div>
+      <div class="machine-card"><div class="m-icon">⚡</div><h4>Electronics Bench</h4><p>ESP32, Arduino, and more</p></div>
+    </div>
+
+    <h2>What You'll Find Here</h2>
+    <p>Two things: free troubleshooting guides and downloadable files. The guides cover real problems I've actually solved — setup walkthroughs, firmware fixes, calibration procedures, and workarounds that took me hours to find. The files are things I've built and tested on my own machines that I think are worth sharing.</p>
+    <p>No fluff. No circles. Just what works.</p>
+
+    <a href="/guides/" class="btn-primary" style="display:inline-block;margin-top:0.5rem">Browse the Guides</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="/" class="logo">Tried<span>&</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
+    <div class="footer-col"><h4>Guides</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/guides/">Guides</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 TriedAndMade.com</p><span class="footer-email">info@triedandmade.com</span></div>
+</footer>
+</body>
+</html>

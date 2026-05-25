@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guides — TriedAndMade</title>
+<meta name="description" content="Step-by-step troubleshooting guides for laser engravers, 3D printers, CNC machines, and more.">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.filters{max-width:1100px;margin:0 auto;padding:0 2rem 30px;display:flex;gap:10px;flex-wrap:wrap}
+.filter-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:7px 16px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--amber);color:#1a0e00;border-color:var(--amber)}
+.guides-grid{max-width:1100px;margin:0 auto;padding:0 2rem 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.guide-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color 0.2s;display:block}
+.guide-card:hover{border-color:var(--amber-dim)}
+.guide-thumb{height:120px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:40px;border-bottom:1px solid var(--border)}
+.guide-body{padding:1.25rem}
+.guide-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.guide-card h3{font-size:15px;font-weight:600;line-height:1.4;margin-bottom:8px}
+.guide-card p{font-size:13px;color:var(--text-muted);line-height:1.5}
+.guide-footer{padding:0.75rem 1.25rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-dim);display:flex;justify-content:space-between}
+.empty{grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-muted)}
+.search-wrap{max-width:1100px;margin:0 auto;padding:0 2rem 20px}
+.search-wrap input{width:100%;max-width:400px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:var(--radius);font-size:14px;font-family:'Barlow',sans-serif}
+.search-wrap input::placeholder{color:var(--text-dim)}
+.search-wrap input:focus{outline:none;border-color:var(--amber-dim)}
+@media(max-width:768px){.guides-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/" style="color:var(--amber)">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Troubleshooting &amp; How-To</div>
+  <h1>The Guides</h1>
+  <p>Everything I've figured out the hard way — written down so you don't have to go through it too.</p>
+</div>
+
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="Search guides..." oninput="filterGuides()">
+</div>
+
+<div class="filters" id="filters">
+  <button class="filter-btn active" onclick="setCategory('',this)">All</button>
+  <button class="filter-btn" onclick="setCategory('Laser Engraving',this)">Laser Engraving</button>
+  <button class="filter-btn" onclick="setCategory('3D Printing',this)">3D Printing</button>
+  <button class="filter-btn" onclick="setCategory('CNC Routing',this)">CNC Routing</button>
+  <button class="filter-btn" onclick="setCategory('Machining',this)">Machining</button>
+  <button class="filter-btn" onclick="setCategory('Electronics',this)">Electronics</button>
+  <button class="filter-btn" onclick="setCategory('General Fixes',this)">General Fixes</button>
+</div>
+
+<div class="guides-grid" id="guides-grid">
+  <div class="empty">Loading guides...</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="/" class="logo">Tried<span>&</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="?cat=Laser Engraving">Laser Engraving</a></li><li><a href="?cat=3D Printing">3D Printing</a></li><li><a href="?cat=CNC Routing">CNC Routing</a></li><li><a href="?cat=Machining">Machining</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/about/">About</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 TriedAndMade.com</p><span class="footer-email">info@triedandmade.com</span></div>
+</footer>
+
+<script>
+const REPO='danp1974/triedandmade';
+const RAW='https://raw.githubusercontent.com/'+REPO+'/main';
+const API='https://api.github.com/repos/'+REPO+'/contents';
+const categoryIcons={'Laser Engraving':'🔆','3D Printing':'🖨️','CNC Routing':'⚙️','Machining':'🔩','Electronics':'⚡','General Fixes':'🔧'};
+let allGuides=[];
+let activeCategory='';
+
+function parseFrontmatter(text){
+  const match=text.match(/^---\n([\s\S]*?)\n---/);
+  if(!match)return{data:{},content:text};
+  const data={};
+  match[1].split('\n').forEach(line=>{const[k,...v]=line.split(':');if(k&&v.length)data[k.trim()]=v.join(':').trim().replace(/^["']|["']$/g,'')});
+  return{data,content:text.slice(match[0].length).trim()};
+}
+
+function setCategory(cat,btn){
+  activeCategory=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  filterGuides();
+}
+
+function filterGuides(){
+  const q=document.getElementById('search').value.toLowerCase();
+  let filtered=allGuides;
+  if(activeCategory)filtered=filtered.filter(g=>g.data.category===activeCategory);
+  if(q)filtered=filtered.filter(g=>(g.data.title||'').toLowerCase().includes(q)||(g.data.description||'').toLowerCase().includes(q));
+  renderGuides(filtered);
+}
+
+function renderGuides(guides){
+  const el=document.getElementById('guides-grid');
+  if(!guides.length){el.innerHTML='<div class="empty">No guides found. Try a different search or category.</div>';return;}
+  el.innerHTML=guides.map(g=>`
+    <a href="/guides/post/?slug=${g.slug}" class="guide-card">
+      <div class="guide-thumb">${categoryIcons[g.data.category]||'📋'}</div>
+      <div class="guide-body">
+        <div class="guide-tag">${g.data.category||'Guide'}</div>
+        <h3>${g.data.title||g.slug}</h3>
+        <p>${g.data.description||''}</p>
+      </div>
+      <div class="guide-footer"><span>${g.data.category||''}</span><span>${g.data.date?new Date(g.data.date).toLocaleDateString():''}</span></div>
+    </a>`).join('');
+}
+
+async function loadGuides(){
+  try{
+    const res=await fetch(API+'/content/guides');
+    if(!res.ok)throw new Error();
+    const files=await res.json();
+    const mdFiles=files.filter(f=>f.name.endsWith('.md'));
+    if(!mdFiles.length){document.getElementById('guides-grid').innerHTML='<div class="empty">No guides yet — check back soon!</div>';return;}
+    allGuides=await Promise.all(mdFiles.map(async f=>{
+      const r=await fetch(RAW+'/content/guides/'+f.name);
+      const text=await r.text();
+      return{slug:f.name.replace('.md',''),...parseFrontmatter(text)};
+    }));
+    allGuides.sort((a,b)=>new Date(b.data.date||0)-new Date(a.data.date||0));
+    const params=new URLSearchParams(window.location.search);
+    const cat=params.get('cat');
+    if(cat){
+      activeCategory=cat;
+      document.querySelectorAll('.filter-btn').forEach(b=>{if(b.textContent===cat)b.classList.add('active');else b.classList.remove('active')});
+    }
+    filterGuides();
+  }catch(e){document.getElementById('guides-grid').innerHTML='<div class="empty">Guides coming soon!</div>';}
+}
+
+loadGuides();
+</script>
+</body>
+</html>
