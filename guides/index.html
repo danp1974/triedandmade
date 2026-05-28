@@ -80,6 +80,16 @@ const API='https://api.github.com/repos/'+REPO+'/contents';
 const categoryIcons={'Laser Engraving':'🔆','3D Printing':'🖨️','CNC Routing':'⚙️','Machining':'🔩','Electronics':'⚡','General Fixes':'🔧'};
 let allGuides=[];
 let activeCategory='';
+const PINNED_GUIDES=[{
+  slug:'3d-print-settings-why-3dprintlogpro',
+  data:{
+    title:'3D Print Settings — Why I Built 3DPrintLogPro',
+    description:'How a senior project deadline turned me into a maker — and why I built a tool to track every print setting automatically.',
+    category:'3D Printing',
+    url:'/forum/3d-print-settings-why-3dprintlogpro/',
+    date:'2026-05-28'
+  }
+}];
 
 function parseFrontmatter(text){
   const match=text.match(/^---\n([\s\S]*?)\n---/);
@@ -108,7 +118,7 @@ function renderGuides(guides){
   const el=document.getElementById('guides-grid');
   if(!guides.length){el.innerHTML='<div class="empty">No guides found. Try a different search or category.</div>';return;}
   el.innerHTML=guides.map(g=>`
-    <a href="/guides/post/?slug=${g.slug}" class="guide-card">
+    <a href="${g.data.url||'/guides/post/?slug='+g.slug}" class="guide-card">
       <div class="guide-thumb">${categoryIcons[g.data.category]||'📋'}</div>
       <div class="guide-body">
         <div class="guide-tag">${g.data.category||'Guide'}</div>
@@ -125,12 +135,12 @@ async function loadGuides(){
     if(!res.ok)throw new Error();
     const files=await res.json();
     const mdFiles=files.filter(f=>f.name.endsWith('.md'));
-    if(!mdFiles.length){document.getElementById('guides-grid').innerHTML='<div class="empty">No guides yet — check back soon!</div>';return;}
-    allGuides=await Promise.all(mdFiles.map(async f=>{
+    if(!mdFiles.length){allGuides=[...PINNED_GUIDES];filterGuides();return;}
+    allGuides=[...PINNED_GUIDES,...await Promise.all(mdFiles.map(async f=>{
       const r=await fetch(RAW+'/content/guides/'+f.name);
       const text=await r.text();
       return{slug:f.name.replace('.md',''),...parseFrontmatter(text)};
-    }));
+    }))];
     allGuides.sort((a,b)=>new Date(b.data.date||0)-new Date(a.data.date||0));
     const params=new URLSearchParams(window.location.search);
     const cat=params.get('cat');
@@ -139,7 +149,7 @@ async function loadGuides(){
       document.querySelectorAll('.filter-btn').forEach(b=>{if(b.textContent===cat)b.classList.add('active');else b.classList.remove('active')});
     }
     filterGuides();
-  }catch(e){document.getElementById('guides-grid').innerHTML='<div class="empty">Guides coming soon!</div>';}
+  }catch(e){allGuides=[...PINNED_GUIDES];filterGuides();}
 }
 
 loadGuides();

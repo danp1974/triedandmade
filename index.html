@@ -202,22 +202,22 @@ const categoryIcons = {
   'Laser Engraving': '🔆', '3D Printing': '🖨️', 'CNC Routing': '⚙️',
   'Machining': '🔩', 'Electronics': '⚡', 'General Fixes': '🔧'
 };
+const PINNED_GUIDES = [{
+  slug: '3d-print-settings-why-3dprintlogpro',
+  data: {
+    title: '3D Print Settings — Why I Built 3DPrintLogPro',
+    description: 'How a senior project deadline turned me into a maker — and why I built a tool to track every print setting automatically.',
+    category: '3D Printing',
+    url: '/forum/3d-print-settings-why-3dprintlogpro/',
+    date: '2026-05-28'
+  }
+}];
 
 async function loadLatestGuides() {
   const el = document.getElementById('latest-guides');
-  try {
-    const res = await fetch(API + '/content/guides');
-    if (!res.ok) throw new Error();
-    const files = await res.json();
-    const mdFiles = files.filter(f => f.name.endsWith('.md')).slice(-3).reverse();
-    if (!mdFiles.length) { el.innerHTML = '<div class="loading">No guides yet — check back soon!</div>'; return; }
-    const guides = await Promise.all(mdFiles.map(async f => {
-      const r = await fetch(RAW + '/content/guides/' + f.name);
-      const text = await r.text();
-      return { slug: f.name.replace('.md',''), ...parseFrontmatter(text) };
-    }));
+  function renderLatest(guides) {
     el.innerHTML = guides.map(g => `
-      <a href="/guides/post/?slug=${g.slug}" class="guide-card">
+      <a href="${g.data.url||'/guides/post/?slug='+g.slug}" class="guide-card">
         <div class="guide-thumb">${categoryIcons[g.data.category] || '📋'}</div>
         <div class="guide-body">
           <div class="guide-tag">${g.data.category || 'Guide'}</div>
@@ -226,8 +226,20 @@ async function loadLatestGuides() {
         </div>
         <div class="guide-footer"><span>${g.data.category || ''}</span><span>${g.data.date ? new Date(g.data.date).toLocaleDateString() : ''}</span></div>
       </a>`).join('');
+  }
+  try {
+    const res = await fetch(API + '/content/guides');
+    if (!res.ok) throw new Error();
+    const files = await res.json();
+    const mdFiles = files.filter(f => f.name.endsWith('.md')).slice(-2).reverse();
+    const fetched = await Promise.all(mdFiles.map(async f => {
+      const r = await fetch(RAW + '/content/guides/' + f.name);
+      const text = await r.text();
+      return { slug: f.name.replace('.md',''), ...parseFrontmatter(text) };
+    }));
+    renderLatest([...PINNED_GUIDES, ...fetched].slice(0, 3));
   } catch(e) {
-    el.innerHTML = '<div class="loading">Guides coming soon!</div>';
+    renderLatest(PINNED_GUIDES);
   }
 }
 
