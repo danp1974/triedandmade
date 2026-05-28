@@ -64,6 +64,9 @@
 .about-text h2{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;margin-bottom:1rem}
 .about-text p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:1rem}
 .loading{text-align:center;padding:2rem;color:var(--text-muted);font-size:14px}
+.site-banner{background:var(--surface);border-left:3px solid var(--amber-light);padding:10px 48px 10px 16px;position:relative;font-size:13px;color:var(--text-muted);line-height:1.5}
+.site-banner-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:14px;padding:4px;line-height:1;transition:color 0.2s}
+.site-banner-close:hover{color:var(--text)}
 @media(max-width:768px){.hero{grid-template-columns:1fr}.hero-stats{display:none}.two-paths{grid-template-columns:1fr}.guides-grid{grid-template-columns:1fr}.products-row{grid-template-columns:1fr 1fr}.about-strip{grid-template-columns:1fr}}
 </style>
 </head>
@@ -78,6 +81,11 @@
   </ul>
   <a href="/guides/" class="nav-cta">Find a Fix</a>
 </nav>
+
+<div class="site-banner" id="siteBanner">
+  <p>This site is a work in progress — new guides, tools, and content are added regularly. I work for a living and build this as a passion project, so check back often. Thanks for being here!</p>
+  <button class="site-banner-close" onclick="dismissBanner()" aria-label="Dismiss">✕</button>
+</div>
 
 <section class="hero">
   <div>
@@ -170,6 +178,10 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script>
+if(sessionStorage.getItem('bannerDismissed')){document.getElementById('siteBanner').style.display='none';}
+function dismissBanner(){sessionStorage.setItem('bannerDismissed','1');document.getElementById('siteBanner').style.display='none';}
+</script>
 <script>
 const REPO = 'danp1974/triedandmade';
 const RAW = 'https://raw.githubusercontent.com/' + REPO + '/main';

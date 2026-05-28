@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Print Settings — Why I Built 3DPrintLogPro | TriedAndMade</title>
+<meta name="description" content="How a senior school project, a Creality Ender 5 Plus, and too many sticky notes led me to build 3DPrintLogPro — the print logging tool I wished I'd had from day one.">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.article-wrap{max-width:720px;margin:0 auto;padding:0 2rem 80px}
+.article-meta{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.article-meta .tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);background:rgba(232,146,10,0.1);padding:3px 10px;border-radius:4px}
+.article-meta .author{font-size:13px;color:var(--text-muted)}
+.article-meta .author strong{color:var(--text)}
+.article-body h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;margin:2.5rem 0 1rem;padding-left:12px;border-left:3px solid var(--amber-light);color:var(--text)}
+.article-body p{font-size:16px;color:var(--text-muted);line-height:1.8;margin-bottom:1.25rem}
+.article-body a{color:var(--amber);text-decoration:underline;text-underline-offset:3px}
+.article-body a:hover{color:var(--amber-light)}
+.article-signature{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:15px;color:var(--text-muted);font-style:italic}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">3D Printing</div>
+  <h1>3D Print Settings —<br>Why I Built 3DPrintLogPro</h1>
+  <p>How a senior school project, a Creality Ender 5 Plus, and too many sticky notes led me to build the tool I wished I'd had from day one.</p>
+</div>
+
+<div class="article-wrap">
+  <div class="article-meta">
+    <span class="tag">3D Printing</span>
+    <span class="author">By <strong>Danny</strong> — TriedAndMade.com</span>
+  </div>
+
+  <div class="article-body">
+
+    <h2>It Started With My Daughter</h2>
+    <p>My journey into 3D printing didn't start with a hobby or a side project. It started the evening I got home from work and my daughter Hannah met me at the door with that look — the one every parent knows. Something was weighing on her.</p>
+    <p>She told me her senior project was waiting on the school's single 3D printer, and several other students were ahead of her. Senior projects in Florida are due at the beginning of May, and time was already running short. At the time I was running my own air conditioning contracting business in Central Florida. Free time was not exactly something I had in abundance.</p>
+    <p>But she's my daughter. So I took on the challenge with her.</p>
+    <p>We bought a Creality Ender 5 Plus — the build volume was exactly what Hannah's project needed. And like every single person who picks up a 3D printer for the first time, I found myself deep in a rabbit hole of YouTube videos and Google searches, trying to figure out what settings actually worked and why.</p>
+
+    <h2>The Sticky Note Problem</h2>
+    <p>Here's what nobody tells you about getting started with 3D printing: one print goes perfectly, and the very next one turns into a pile of spaghetti filament on the build plate. And you're standing there asking yourself — what did I change? What did I do differently?</p>
+    <p>So, you start writing things down. Sticky notes. Scraps of paper. A note on your phone. Maybe a spreadsheet if you're organized — but who has time for that when you're just trying to get one clean print out the door?</p>
+    <p>I knew the slicer programs had profile libraries you could create and save. But PrusaSlicer alone has around 356 different settings. There was no way I was going to build out and label hundreds of profiles and somehow remember which one matched which print. It just wasn't practical.</p>
+    <p>What I really needed was something that would just — automatically — read the G-code file, pull out every setting the slicer had embedded, and save it somewhere searchable. With a note attached. And a way to mark whether the print worked or not.</p>
+    <p>That tool didn't exist. So, I built it.</p>
+
+    <h2>Why I Built 3DPrintLogPro</h2>
+    <p>3DPrintLogPro is not a tool I built to sell. It's a tool I built because I needed it, used it, and after a few years of refining it — realized other makers probably needed it too.</p>
+    <p>Here's what it does: every time you slice a print and save a G-code file, 3DPrintLogPro can automatically detect that file, read the 300+ settings your slicer embedded in it, and save them to a searchable log. You give the print a name, mark whether it succeeded or failed, add any notes — and it's saved. Forever. Searchable. Exportable to Excel.</p>
+    <p>And when you find a set of settings that works perfectly — for a specific filament, a specific part, a specific printer configuration — you can push those settings directly back to your slicer as a new profile library. One click. No re-entering 356 settings by hand.</p>
+    <p>It supports PrusaSlicer, SuperSlicer, OrcaSlicer, Bambu Studio, and Cura. It runs on Windows.</p>
+
+    <h2>She Got a Great Score</h2>
+    <p>Hannah finished her senior project. She got a great score. And she was genuinely proud of what she built — we both were.</p>
+    <p>That printer never went back in the box. I've been using it ever since — through hardware upgrades, filament experiments, and countless projects. And the entire time, 3DPrintLogPro has been running alongside it, quietly keeping track of every setting change, every successful print, every lesson learned.</p>
+    <p>I'm not here to give you a sales pitch. I'm here because I've been exactly where you are — standing next to a printer at midnight, holding a sticky note, wondering what went wrong. I built the tool I wished I'd had on day one. And if it saves you from wasting one roll of filament or one failed deadline — that's exactly why I made it.</p>
+    <p>If this sounds like something that could help you, <a href="https://triedandmade.com/shop">visit my shop page</a> to learn more and grab a copy. And if you have any questions at all — about the program, your printer, your settings, anything — <a href="mailto:info@triedandmade.com?subject=3DPrintLogPro%20Question">just click here and send me an email</a>. I read every one.</p>
+
+    <p class="article-signature">— Danny</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo">Tried<span>&</span>Made</a>
+      <p>Real fixes for real makers. No fluff, no circles — just what works.</p>
+    </div>
+    <div class="footer-col"><h4>Guides</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li><li><a href="/guides/?cat=Machining">Machining</a></li></ul></div>
+    <div class="footer-col"><h4>Shop</h4><ul><li><a href="/shop/?cat=SVG Files">SVG Files</a></li><li><a href="/shop/?cat=STL Files">STL Files</a></li><li><a href="/shop/?cat=PDF Guides">PDF Guides</a></li><li><a href="/shop/?cat=Settings Packs">Settings Packs</a></li></ul></div>
+    <div class="footer-col"><h4>Info</h4><ul><li><a href="/about/">About</a></li><li><a href="mailto:info@triedandmade.com">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TriedAndMade.com — All rights reserved</p>
+    <span class="footer-email">info@triedandmade.com</span>
+  </div>
+</footer>
+</body>
+</html>
