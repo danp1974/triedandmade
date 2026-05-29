@@ -1,0 +1,226 @@
+END USER LICENSE AGREEMENT
+3DPrintLogPro by TriedAndMade.com
+Last Updated: January 1, 2025
+
+PLEASE READ THIS END USER LICENSE AGREEMENT ("AGREEMENT") CAREFULLY BEFORE
+INSTALLING OR USING 3DPrintLogPro ("SOFTWARE"). BY INSTALLING, COPYING, OR
+OTHERWISE USING THE SOFTWARE, YOU AGREE TO BE BOUND BY THE TERMS OF THIS
+AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT INSTALL
+OR USE THE SOFTWARE.
+
+========================================================================
+1. GRANT OF LICENSE
+========================================================================
+
+Subject to the terms and conditions of this Agreement, TriedAndMade.com
+("Licensor") grants you ("Licensee") a limited, non-exclusive,
+non-transferable, personal license to install and use 3DPrintLogPro on up
+to three (3) computers that you personally own or control.
+
+This is a single-user, lifetime license acquired through a one-time
+purchase. The license is granted to you personally and may not be shared
+with, transferred to, or used by any other individual or entity.
+
+You may install the Software on up to three (3) machines simultaneously.
+Each installation consumes one activation slot. You may deactivate an
+installation from within the Software to free up a slot for use on another
+machine.
+
+========================================================================
+2. RESTRICTIONS
+========================================================================
+
+You may NOT:
+
+a) Redistribute, resell, rent, lease, sublicense, or otherwise transfer
+   the Software or your license rights to any third party;
+
+b) Share your license key with any other person or make it publicly
+   available in any form;
+
+c) Reverse engineer, decompile, disassemble, or attempt to derive the
+   source code of the Software, except to the extent that such activity
+   is expressly permitted by applicable law notwithstanding this
+   limitation;
+
+d) Modify, adapt, translate, or create derivative works based upon the
+   Software;
+
+e) Remove, alter, or obscure any proprietary notices, labels, or marks
+   on the Software;
+
+f) Use the Software for any unlawful purpose or in violation of any
+   applicable laws or regulations;
+
+g) Circumvent, disable, or otherwise interfere with any license
+   protection mechanisms, activation systems, or security features of
+   the Software;
+
+h) Use the Software to develop a competing product or service.
+
+========================================================================
+3. ALL SALES ARE FINAL — NO REFUNDS
+========================================================================
+
+ALL SALES ARE FINAL. NO REFUNDS WILL BE ISSUED EXCEPT WHERE REQUIRED
+BY APPLICABLE LAW. By completing your purchase, you acknowledge
+and agree that you have read this Agreement, understand that the
+Software is a downloadable digital product, and waive any right to a
+refund or chargeback.
+
+Initiating a chargeback or payment dispute constitutes a breach of this
+Agreement and will result in immediate revocation of your license.
+
+========================================================================
+4. INTELLECTUAL PROPERTY
+========================================================================
+
+The Software, including all code, algorithms, interfaces, design, and
+documentation, is and remains the exclusive property of TriedAndMade.com
+and its owner. All rights, title, and interest in and to the Software,
+including all intellectual property rights therein, are and shall remain
+with TriedAndMade.com.
+
+This Agreement does not grant you any rights to trademarks, service marks,
+trade names, or logos of TriedAndMade.com.
+
+Your G-code files, print job data, and any content you input into the
+Software remain your property. The Licensor does not claim any ownership
+over the data you store within the application.
+
+========================================================================
+5. DISCLAIMER OF WARRANTIES
+========================================================================
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE
+LICENSOR DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO:
+
+- WARRANTIES OF MERCHANTABILITY
+- FITNESS FOR A PARTICULAR PURPOSE
+- NON-INFRINGEMENT
+- ACCURACY OR RELIABILITY OF RESULTS
+
+THE LICENSOR DOES NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR
+REQUIREMENTS, OPERATE WITHOUT INTERRUPTION, OR BE FREE OF ERRORS.
+
+THE LICENSOR IS NOT RESPONSIBLE FOR ANY 3D PRINT FAILURES, HARDWARE
+DAMAGE, MATERIAL WASTE, PROPERTY DAMAGE, OR ANY OTHER OUTCOME
+RESULTING FROM SETTINGS LOGGED, DISPLAYED, OR SUGGESTED BY THE
+APPLICATION. ALL DECISIONS REGARDING 3D PRINTING SETTINGS AND
+OPERATIONS ARE MADE SOLELY AT YOUR OWN RISK.
+
+========================================================================
+6. LIMITATION OF LIABILITY
+========================================================================
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL
+TRIEDANDMADE.COM, ITS OWNER, EMPLOYEES, OR AFFILIATES BE LIABLE FOR ANY:
+
+- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, CONSEQUENTIAL, OR PUNITIVE
+  DAMAGES;
+- LOSS OF PROFITS, REVENUE, DATA, BUSINESS OPPORTUNITIES, OR GOODWILL;
+- COST OF SUBSTITUTE GOODS OR SERVICES;
+- DAMAGES ARISING FROM DECISIONS MADE BASED ON DATA STORED IN THE
+  APPLICATION;
+- PERSONAL INJURY OR PROPERTY DAMAGE OF ANY NATURE.
+
+IN ALL CASES, THE TOTAL CUMULATIVE LIABILITY OF TRIEDANDMADE.COM TO
+YOU FOR ANY CLAIMS ARISING UNDER OR RELATED TO THIS AGREEMENT SHALL
+NOT EXCEED THE ORIGINAL PURCHASE PRICE YOU PAID FOR THE SOFTWARE.
+
+SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN
+DAMAGES. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE
+GREATEST EXTENT PERMITTED BY LAW.
+
+========================================================================
+7. LICENSE VALIDATION AND INTERNET CONNECTIVITY
+========================================================================
+
+The Software requires an active internet connection for:
+
+a) Initial activation — you must connect to the internet when first
+   activating your license key;
+
+b) Periodic validation — the Software will periodically verify your
+   license with the Licensor's servers to confirm it remains valid and
+   has not been revoked.
+
+A grace period of thirty (30) days is provided for offline use. If
+the Software cannot reach the validation server for more than 30
+consecutive days, you will be notified and required to connect to the
+internet to re-validate your license.
+
+License validation data is transmitted securely. No personal data
+beyond your license key and an anonymized machine identifier is
+transmitted during validation.
+
+========================================================================
+8. TERMINATION
+========================================================================
+
+This Agreement and your license rights are effective until terminated.
+
+Your license will terminate IMMEDIATELY and automatically without notice
+if you:
+
+a) Breach any term of this Agreement;
+b) Initiate a chargeback, payment reversal, or dispute;
+c) Attempt to circumvent any license protection mechanism;
+d) Share your license key in violation of this Agreement.
+
+The Licensor reserves the right to revoke any license, at its sole
+discretion, for fraudulent purchases, abuse of the activation system,
+or violation of these terms.
+
+Upon termination, you must cease all use of the Software and destroy
+all copies in your possession.
+
+========================================================================
+9. GOVERNING LAW AND JURISDICTION
+========================================================================
+
+This Agreement shall be governed by and construed in accordance with
+the laws of the State of Florida, United States of America, without
+regard to its conflict of law provisions.
+
+Any disputes arising under or in connection with this Agreement shall
+be subject to the exclusive jurisdiction of the courts located in
+Marion County, Florida.
+
+If any provision of this Agreement is found to be unenforceable, the
+remaining provisions will continue in full force and effect.
+
+========================================================================
+10. ENTIRE AGREEMENT
+========================================================================
+
+This Agreement constitutes the entire agreement between you and
+TriedAndMade.com regarding the Software and supersedes all prior
+understandings, agreements, representations, and warranties, both
+written and oral.
+
+The Licensor reserves the right to update this Agreement. Continued
+use of the Software following notification of changes constitutes
+acceptance of the revised terms.
+
+========================================================================
+11. CONTACT INFORMATION
+========================================================================
+
+TriedAndMade.com
+Windermere, Florida, United States
+Email: info@triedandmade.com
+Website: https://triedandmade.com
+
+For license support, activation issues, or questions about this
+Agreement, please contact: info@triedandmade.com
+
+========================================================================
+
+BY INSTALLING OR USING 3DPrintLogPro, YOU ACKNOWLEDGE THAT YOU HAVE
+READ THIS AGREEMENT, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS
+TERMS AND CONDITIONS. YOU ALSO AGREE THAT ALL SALES ARE FINAL AND
+NO REFUNDS WILL BE ISSUED.
+
+========================================================================

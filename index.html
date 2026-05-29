@@ -271,5 +271,22 @@ async function loadLatestProducts() {
 loadLatestGuides();
 loadLatestProducts();
 </script>
+
+<div id="gdpr-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1c1c1a;border-top:1px solid #2e2e2b;padding:16px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <p style="margin:0;font-size:13px;color:#8a8880;max-width:700px;line-height:1.6;">
+    This site uses Cloudflare analytics (cookie-free) and may use essential cookies for security. By continuing to use this site you accept our
+    <a href="/privacy/" style="color:#E8920A;">Privacy Policy</a>.
+    <strong style="color:#e8e6df;">No advertising or tracking cookies are used.</strong>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="acceptGDPR()" style="background:#E8920A;color:#1a0e00;border:none;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">Accept</button>
+    <button onclick="declineGDPR()" style="background:transparent;color:#8a8880;border:1px solid #2e2e2b;padding:8px 20px;border-radius:6px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+function acceptGDPR(){localStorage.setItem('gdpr','accepted');document.getElementById('gdpr-banner').style.display='none';}
+function declineGDPR(){localStorage.setItem('gdpr','declined');document.getElementById('gdpr-banner').style.display='none';}
+(function(){if(!localStorage.getItem('gdpr')){var b=document.getElementById('gdpr-banner');b.style.display='flex';}})();
+</script>
 </body>
 </html>
