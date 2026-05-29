@@ -21,6 +21,15 @@
 .affiliate-notice span{font-size:16px;flex-shrink:0;margin-top:2px;}
 .affiliate-notice p{margin:0;}
 .affiliate-notice a{color:var(--amber);}
+.more-guides{background:var(--surface);border-top:1px solid var(--border);padding:50px 2rem}
+.more-guides-inner{max-width:720px;margin:0 auto}
+.more-guides-inner h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:1.25rem}
+.more-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.more-guide-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color 0.2s;display:block}
+.more-guide-card:hover{border-color:var(--amber-dim)}
+.more-guide-card .mg-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.more-guide-card h4{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:6px}
+.more-guide-card p{font-size:12px;color:var(--text-muted);line-height:1.5}
 </style>
 </head>
 <body>
@@ -33,7 +42,17 @@
     <li><a href="mailto:info@triedandmade.com">Contact</a></li>
   </ul>
   <a href="/guides/" class="nav-cta">Find a Fix</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
 </nav>
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+</div>
+<script>(function(){document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('nav-mobile').classList.toggle('open');});})();</script>
 
 <div class="page-header">
   <div class="eyebrow">3D Printing</div>
@@ -84,6 +103,44 @@
   </div>
 </div>
 
+<section class="more-guides">
+  <div class="more-guides-inner">
+    <h3>More Guides</h3>
+    <div class="more-guides-grid" id="more-guides-grid">
+      <div style="color:var(--text-muted);font-size:14px">Loading...</div>
+    </div>
+    <a href="/guides/" class="btn-secondary" style="display:inline-block;margin-top:1.5rem">Browse all guides →</a>
+  </div>
+</section>
+<script>
+(async function(){
+  const REPO='danp1974/triedandmade';
+  const RAW='https://raw.githubusercontent.com/'+REPO+'/main';
+  const API='https://api.github.com/repos/'+REPO+'/contents';
+  const el=document.getElementById('more-guides-grid');
+  const catIcons={'Laser Engraving':'🔆','3D Printing':'🖨️','CNC Routing':'⚙️','Machining':'🔩','Electronics':'⚡','General Fixes':'🔧'};
+  function parseMeta(text){const m=text.match(/^---\n([\s\S]*?)\n---/);const d={};if(m)m[1].split('\n').forEach(l=>{const[k,...v]=l.split(':');if(k&&v.length)d[k.trim()]=v.join(':').trim().replace(/^["']|["']$/g,'')});return d;}
+  try{
+    const res=await fetch(API+'/content/guides');
+    if(!res.ok)throw new Error();
+    const files=(await res.json()).filter(f=>f.name.endsWith('.md')).slice(0,3);
+    if(!files.length)throw new Error();
+    const guides=await Promise.all(files.map(async f=>{
+      const r=await fetch(RAW+'/content/guides/'+f.name);
+      return{slug:f.name.replace('.md',''),data:parseMeta(await r.text())};
+    }));
+    el.innerHTML=guides.map(g=>`
+      <a href="${g.data.url||'/guides/post/?slug='+g.slug}" class="more-guide-card">
+        <div class="mg-tag">${g.data.category||'Guide'}</div>
+        <h4>${g.data.title||g.slug}</h4>
+        <p>${(g.data.description||'').substring(0,100)}</p>
+      </a>`).join('');
+  }catch(e){
+    el.innerHTML='<p style="color:var(--text-muted);font-size:14px;grid-column:1/-1">More guides coming soon.</p>';
+  }
+})();
+</script>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -95,7 +152,7 @@
     <div class="footer-col"><h4>Info</h4><ul><li><a href="/about/">About</a></li><li><a href="mailto:info@triedandmade.com">Contact</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 TriedAndMade.com — All rights reserved</p>
+    <p>© 2026 TriedAndMade.com — All rights reserved</p>
     <span class="footer-email">info@triedandmade.com</span>
   </div>
 </footer>
