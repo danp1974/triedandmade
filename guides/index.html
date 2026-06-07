@@ -67,6 +67,7 @@
   <button class="filter-btn" onclick="setCategory('Machining',this)">Machining</button>
   <button class="filter-btn" onclick="setCategory('Electronics',this)">Electronics</button>
   <button class="filter-btn" onclick="setCategory('General Fixes',this)">General Fixes</button>
+  <button class="filter-btn" onclick="setCategory('HVAC',this)">HVAC</button>
 </div>
 
 <div class="guides-grid" id="guides-grid">
@@ -76,7 +77,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand"><a href="/" class="logo">Tried<span>&</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
-    <div class="footer-col"><h4>Categories</h4><ul><li><a href="?cat=Laser Engraving">Laser Engraving</a></li><li><a href="?cat=3D Printing">3D Printing</a></li><li><a href="?cat=CNC Routing">CNC Routing</a></li><li><a href="?cat=Machining">Machining</a></li></ul></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="?cat=Laser Engraving">Laser Engraving</a></li><li><a href="?cat=3D Printing">3D Printing</a></li><li><a href="?cat=CNC Routing">CNC Routing</a></li><li><a href="?cat=Machining">Machining</a></li><li><a href="?cat=HVAC">HVAC</a></li></ul></div>
     <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/about/">About</a></li></ul></div>
     <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
   </div>
@@ -87,7 +88,7 @@
 const REPO='danp1974/triedandmade';
 const RAW='https://raw.githubusercontent.com/'+REPO+'/main';
 const API='https://api.github.com/repos/'+REPO+'/contents';
-const categoryIcons={'Laser Engraving':'🔆','3D Printing':'🖨️','CNC Routing':'⚙️','Machining':'🔩','Electronics':'⚡','General Fixes':'🔧'};
+const categoryIcons={'Laser Engraving':'🔆','3D Printing':'🖨️','CNC Routing':'⚙️','Machining':'🔩','Electronics':'⚡','General Fixes':'🔧','HVAC':'🌡️'};
 let allGuides=[];
 let activeCategory='';
 const PINNED_GUIDES=[{
