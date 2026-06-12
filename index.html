@@ -229,7 +229,7 @@ async function loadLatestGuides() {
   const el = document.getElementById('latest-guides');
   function renderLatest(guides) {
     el.innerHTML = guides.map(g => `
-      <a href="${g.data.url||'/guides/post/?slug='+g.slug}" class="guide-card">
+      <a href="${g.data.url||'/guides/'+g.slug+'/'}" class="guide-card">
         <div class="guide-thumb">${categoryIcons[g.data.category] || '📋'}</div>
         <div class="guide-body">
           <div class="guide-tag">${g.data.category || 'Guide'}</div>

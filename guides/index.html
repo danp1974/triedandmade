@@ -129,7 +129,7 @@ function renderGuides(guides){
   const el=document.getElementById('guides-grid');
   if(!guides.length){el.innerHTML='<div class="empty">No guides found. Try a different search or category.</div>';return;}
   el.innerHTML=guides.map(g=>`
-    <a href="${g.data.url||'/guides/post/?slug='+g.slug}" class="guide-card">
+    <a href="${g.data.url||'/guides/'+g.slug+'/'}" class="guide-card">
       <div class="guide-thumb">${categoryIcons[g.data.category]||'📋'}</div>
       <div class="guide-body">
         <div class="guide-tag">${g.data.category||'Guide'}</div>
