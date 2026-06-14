@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Print Stringing: How to Actually Fix It (Not Just Hide It) | TriedAndMade</title>
+<meta name="description" content="Spider webs between every part of your print? Stringing comes down to four causes. Here&#x27;s how to fix them in order — including the retraction numbers nobody gives you.">
+<link rel="canonical" href="https://triedandmade.com/guides/3d-print-stringing/">
+<meta property="og:title" content="3D Print Stringing: How to Actually Fix It (Not Just Hide It)">
+<meta property="og:description" content="Spider webs between every part of your print? Stringing comes down to four causes. Here&#x27;s how to fix them in order — including the retraction numbers nobody gives you.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://triedandmade.com/guides/3d-print-stringing/">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.post-wrap{max-width:780px;margin:0 auto;padding:50px 2rem 80px}
+.post-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);margin-bottom:2rem;transition:color 0.2s}
+.post-back:hover{color:var(--amber)}
+.post-back::before{content:'←'}
+.post-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.post-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;margin-bottom:16px}
+.post-meta{font-size:13px;color:var(--text-dim);margin-bottom:2rem;display:flex;gap:1.5rem}
+.post-desc{font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-body{font-size:16px;line-height:1.8;color:var(--text)}
+.post-body h1,.post-body h2,.post-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;margin:2rem 0 0.75rem;color:var(--text)}
+.post-body h1{font-size:32px}
+.post-body h2{font-size:26px}
+.post-body h3{font-size:20px}
+.post-body p{margin-bottom:1.25rem}
+.post-body ul,.post-body ol{margin:0 0 1.25rem 1.5rem}
+.post-body li{margin-bottom:6px}
+.post-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:13px;font-family:monospace;color:var(--amber-light)}
+.post-body pre{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;overflow-x:auto}
+.post-body pre code{background:none;padding:0;color:var(--text)}
+.post-body blockquote{border-left:3px solid var(--amber);padding-left:1.25rem;margin-bottom:1.25rem;color:var(--text-muted);font-style:italic}
+.post-body img{max-width:100%;border-radius:8px;margin:1rem 0;border:1px solid var(--border)}
+.post-body a{color:var(--amber);text-decoration:underline;text-decoration-color:var(--amber-dim)}
+.post-body hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.post-body strong{color:var(--text);font-weight:600}
+.post-nav{display:flex;justify-content:flex-start;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.affiliate-notice{display:flex;align-items:flex-start;gap:10px;background:rgba(232,146,10,0.08);border:1px solid var(--amber-dim);border-radius:6px;padding:12px 16px;margin-bottom:2rem;font-size:13px;color:var(--text-muted);line-height:1.6}
+.affiliate-notice span{font-size:16px;flex-shrink:0;margin-top:2px}
+.affiliate-notice p{margin:0}
+.affiliate-notice a{color:var(--amber)}
+.more-guides{background:var(--surface);border-top:1px solid var(--border);padding:50px 2rem}
+.more-guides-inner{max-width:780px;margin:0 auto}
+.more-guides-inner h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:1.25rem}
+.more-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.more-guide-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color 0.2s;display:block;text-decoration:none}
+.more-guide-card:hover{border-color:var(--amber-dim)}
+.more-guide-card .mg-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.more-guide-card h4{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:6px;color:var(--text)}
+.more-guide-card p{font-size:12px;color:var(--text-muted);line-height:1.5;margin:0}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&amp;</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/" style="color:var(--amber)">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+</div>
+<script>(function(){document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('nav-mobile').classList.toggle('open');});})();</script>
+
+<div class="post-wrap">
+  <a href="/guides/" class="post-back">Back to all guides</a>
+  <div class="post-tag">3D Printing</div>
+  <h1 class="post-title">3D Print Stringing: How to Actually Fix It (Not Just Hide It)</h1>
+  <div class="post-meta"><span>June 14, 2026</span></div>
+  <p class="post-desc">Spider webs between every part of your print? Stringing comes down to four causes. Here&#x27;s how to fix them in order — including the retraction numbers nobody gives you.</p>
+  <div class="affiliate-notice"><span>&#9888;&#65039;</span><p>This guide may contain affiliate links. If you purchase through these links I may earn a small commission at no extra cost to you. I only recommend products I have personally used. <a href="/terms/">Learn more</a></p></div>
+  <div class="post-body"><h2>The Spider Web Problem</h2>
+<p>You print something with two towers, or a part with gaps in it, and every open space fills with fine hairs of plastic. You can burn them off with a heat gun. You can pick them off with pliers. But you shouldn't have to — stringing is the printer telling you something specific, and it's fixable.</p>
+<p>Four causes, in order of likelihood. Same rule as always: change one thing, test, write it down.</p>
+<h2>1. Your Retraction Settings Are Wrong</h2>
+<p>Stringing happens when the nozzle travels between two points and plastic oozes out along the way. Retraction is the fix — the extruder pulls filament back before the nozzle travels, so there's nothing left at the tip to ooze.</p>
+<p>The numbers depend entirely on one thing: whether your extruder is <strong>Bowden</strong> (motor on the frame, long tube to the hotend) or <strong>direct drive</strong> (motor right on top of the hotend).</p>
+<p><strong>Starting points:</strong>
+- <strong>Bowden:</strong> 4–6 mm retraction distance, 40–45 mm/s retraction speed
+- <strong>Direct drive:</strong> 0.5–2 mm distance, 30–40 mm/s speed</p>
+<p>I learned this difference the hard way. My Ender 5 Plus came stock with a Bowden setup, and I was running 6 mm of retraction to keep it under control. When I converted it to direct drive with a Dragonfly hotend, I kept my old retraction settings — and the printer started clicking, jamming, and grinding filament. Direct drive needed less than 1 mm. Same printer, completely different number. If you've changed <em>anything</em> about your extruder or hotend, your old retraction settings are wrong now.</p>
+<p><strong>How to tune it:</strong> print a retraction test tower (free on Printables — search "retraction test"). It prints the same two towers repeatedly while stepping the retraction distance up. The level where the strings disappear is your number. Takes 30 minutes and ends the guessing forever.</p>
+<h2>2. Your Nozzle Is Too Hot</h2>
+<p>Hotter plastic is runnier plastic. Runnier plastic oozes. If retraction tuning got you 80% of the way and the last fine hairs won't go away, drop your nozzle temperature 5°C and reprint. You can usually go down 5–10°C from the filament's "recommended" temp before layer adhesion suffers.</p>
+<p>A temperature tower (also free on Printables) tests this the same way the retraction tower does — one print, every temperature, pick the level that looks best.</p>
+<h2>3. Your Filament Is Wet</h2>
+<p>Filament soaks up moisture from the air, and wet filament strings no matter what your settings are. The dead giveaway: you hear faint popping or crackling at the nozzle, and prints that used to come out clean suddenly look fuzzy.</p>
+<p>I'm in Florida. Leaving a spool out on the printer for two weeks here is the same as leaving it in a steam room. PETG and nylon are the worst offenders, but even PLA goes bad eventually.</p>
+<p><strong>The fix:</strong> dry the spool — a filament dryer is the easy way, or a few hours in an oven at the filament maker's recommended temp if you trust your oven's thermostat (many run hot, be careful). Then store spools in a sealed bin with desiccant instead of on the machine.</p>
+<p>If your prints got stringier slowly over weeks with no settings changes — it's this one. Dry the spool before you touch a single setting.</p>
+<h2>4. Travel Settings Are Letting It Happen</h2>
+<p>Two slicer settings reduce how much ooze ever reaches your print:</p>
+<ul>
+<li><strong>Travel speed:</strong> raise it. 150+ mm/s travel means the nozzle spends less time over open gaps. Fast travel literally outruns the ooze.</li>
+<li><strong>"Avoid crossing perimeters" / combing:</strong> tells the slicer to route travel moves over the inside of the print instead of across open space. Any ooze lands where you'll never see it.</li>
+</ul>
+<p>These don't fix the cause — they hide the symptom. Do them last, after retraction, temp, and dry filament.</p>
+<h2>The Trap at the End</h2>
+<p>Here's what actually happens when someone fixes stringing: they tune retraction, drop the temp 5°, dry the spool, and bump travel speed — across four different test prints over a weekend. The strings disappear. Six weeks later they load a different brand of PLA and the strings are back, and they cannot remember what the winning combination was.</p>
+<p>Every one of those settings is embedded in the G-code of every test you printed. Your slicer writes them all into the file — retraction distance, retraction speed, temps, travel speed, hundreds more. That's exactly why I built <a href="https://triedandmade.com/shop">3DPrintLogPro</a>: it pulls every setting out of every G-code file automatically and logs it with a success/fail status. Your retraction test isn't a memory anymore — it's a database row you can search next time a new filament starts stringing.</p>
+<p>I built it after one too many weekends spent re-solving problems I'd already solved.</p>
+<h2>Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Most likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strings everywhere, always has</td>
+<td>Retraction not tuned</td>
+<td>Retraction test tower</td>
+</tr>
+<tr>
+<td>Tuned retraction, fine hairs remain</td>
+<td>Temp too high</td>
+<td>Drop nozzle 5°C</td>
+</tr>
+<tr>
+<td>Got worse over weeks, popping sounds</td>
+<td>Wet filament</td>
+<td>Dry the spool, sealed storage</td>
+</tr>
+<tr>
+<td>Strings only across big gaps</td>
+<td>Travel settings</td>
+<td>Faster travel + combing</td>
+</tr>
+<tr>
+<td>Started after a hotend/extruder change</td>
+<td>Old retraction numbers</td>
+<td>Re-tune from scratch</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Still stuck, or got a problem this didn't cover? <a href="mailto:info@triedandmade.com">Send me an email</a> — I read every one.</p>
+<p>— Danny</p></div>
+  <div class="post-nav"><a href="/guides/" class="btn-secondary">&#8592; Back to all guides</a></div>
+</div>
+
+<section class="more-guides">
+  <div class="more-guides-inner">
+    <h3>More Guides</h3>
+    <div class="more-guides-grid">
+      <a href="/guides/first-layer-z-offset/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>First Layer Too Squished or Too High? How to Read It and Fix Your Z-Offset</h4>
+        <p>Your first layer tells you exactly what&#x27;s wrong — if you know how to read it. Here&#x27;s how to dial in </p>
+      </a>
+      <a href="/guides/petg-settings/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>PETG Settings That Actually Work (And Why Yours Don&#x27;t)</h4>
+        <p>PETG promises strength and delivers blobs, strings, and chunks ripped out of your build plate — unti</p>
+      </a>
+      <a href="/guides/print-failed-halfway/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>Why Did My 3D Print Fail Halfway Through? Read the Wreckage</h4>
+        <p>A print that dies at hour 9 left evidence behind. Spaghetti, a shifted layer, a clean stop — each fa</p>
+      </a>
+      <a href="/guides/print-not-sticking-to-bed/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>3D Print Not Sticking to the Bed? Fix It in Order, Not at Random</h4>
+        <p>First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that ke</p>
+      </a>
+    </div>
+    <a href="/guides/" class="btn-secondary" style="display:inline-block;margin-top:1.5rem">Browse all guides &#8594;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="/" class="logo">Tried<span>&amp;</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li><li><a href="/guides/?cat=Machining">Machining</a></li><li><a href="/guides/?cat=HVAC">HVAC</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/about/">About</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>&#169; 2026 TriedAndMade.com</p><span class="footer-email">info@triedandmade.com</span></div>
+</footer>
+
+<div id="gdpr-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1c1c1a;border-top:1px solid #2e2e2b;padding:16px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <p style="margin:0;font-size:13px;color:#8a8880;max-width:700px;line-height:1.6;">
+    This site uses Cloudflare analytics (cookie-free) and may use essential cookies for security. By continuing to use this site you accept our
+    <a href="/privacy/" style="color:#E8920A;">Privacy Policy</a>.
+    <strong style="color:#e8e6df;">No advertising or tracking cookies are used.</strong>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="acceptGDPR()" style="background:#E8920A;color:#1a0e00;border:none;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">Accept</button>
+    <button onclick="declineGDPR()" style="background:transparent;color:#8a8880;border:1px solid #2e2e2b;padding:8px 20px;border-radius:6px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+function acceptGDPR(){localStorage.setItem('gdpr','accepted');document.getElementById('gdpr-banner').style.display='none';}
+function declineGDPR(){localStorage.setItem('gdpr','declined');document.getElementById('gdpr-banner').style.display='none';}
+(function(){if(!localStorage.getItem('gdpr')){var b=document.getElementById('gdpr-banner');b.style.display='flex';}})();
+</script>
+</body>
+</html>

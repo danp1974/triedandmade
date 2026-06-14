@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PETG Settings That Actually Work (And Why Yours Don&#x27;t) | TriedAndMade</title>
+<meta name="description" content="PETG promises strength and delivers blobs, strings, and chunks ripped out of your build plate — until you stop printing it like PLA. Here are the settings that work.">
+<link rel="canonical" href="https://triedandmade.com/guides/petg-settings/">
+<meta property="og:title" content="PETG Settings That Actually Work (And Why Yours Don&#x27;t)">
+<meta property="og:description" content="PETG promises strength and delivers blobs, strings, and chunks ripped out of your build plate — until you stop printing it like PLA. Here are the settings that work.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://triedandmade.com/guides/petg-settings/">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.post-wrap{max-width:780px;margin:0 auto;padding:50px 2rem 80px}
+.post-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);margin-bottom:2rem;transition:color 0.2s}
+.post-back:hover{color:var(--amber)}
+.post-back::before{content:'←'}
+.post-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.post-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;margin-bottom:16px}
+.post-meta{font-size:13px;color:var(--text-dim);margin-bottom:2rem;display:flex;gap:1.5rem}
+.post-desc{font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-body{font-size:16px;line-height:1.8;color:var(--text)}
+.post-body h1,.post-body h2,.post-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;margin:2rem 0 0.75rem;color:var(--text)}
+.post-body h1{font-size:32px}
+.post-body h2{font-size:26px}
+.post-body h3{font-size:20px}
+.post-body p{margin-bottom:1.25rem}
+.post-body ul,.post-body ol{margin:0 0 1.25rem 1.5rem}
+.post-body li{margin-bottom:6px}
+.post-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:13px;font-family:monospace;color:var(--amber-light)}
+.post-body pre{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;overflow-x:auto}
+.post-body pre code{background:none;padding:0;color:var(--text)}
+.post-body blockquote{border-left:3px solid var(--amber);padding-left:1.25rem;margin-bottom:1.25rem;color:var(--text-muted);font-style:italic}
+.post-body img{max-width:100%;border-radius:8px;margin:1rem 0;border:1px solid var(--border)}
+.post-body a{color:var(--amber);text-decoration:underline;text-decoration-color:var(--amber-dim)}
+.post-body hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.post-body strong{color:var(--text);font-weight:600}
+.post-nav{display:flex;justify-content:flex-start;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.affiliate-notice{display:flex;align-items:flex-start;gap:10px;background:rgba(232,146,10,0.08);border:1px solid var(--amber-dim);border-radius:6px;padding:12px 16px;margin-bottom:2rem;font-size:13px;color:var(--text-muted);line-height:1.6}
+.affiliate-notice span{font-size:16px;flex-shrink:0;margin-top:2px}
+.affiliate-notice p{margin:0}
+.affiliate-notice a{color:var(--amber)}
+.more-guides{background:var(--surface);border-top:1px solid var(--border);padding:50px 2rem}
+.more-guides-inner{max-width:780px;margin:0 auto}
+.more-guides-inner h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:1.25rem}
+.more-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.more-guide-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color 0.2s;display:block;text-decoration:none}
+.more-guide-card:hover{border-color:var(--amber-dim)}
+.more-guide-card .mg-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.more-guide-card h4{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:6px;color:var(--text)}
+.more-guide-card p{font-size:12px;color:var(--text-muted);line-height:1.5;margin:0}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&amp;</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/" style="color:var(--amber)">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+</div>
+<script>(function(){document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('nav-mobile').classList.toggle('open');});})();</script>
+
+<div class="post-wrap">
+  <a href="/guides/" class="post-back">Back to all guides</a>
+  <div class="post-tag">3D Printing</div>
+  <h1 class="post-title">PETG Settings That Actually Work (And Why Yours Don&#x27;t)</h1>
+  <div class="post-meta"><span>June 14, 2026</span></div>
+  <p class="post-desc">PETG promises strength and delivers blobs, strings, and chunks ripped out of your build plate — until you stop printing it like PLA. Here are the settings that work.</p>
+  <div class="affiliate-notice"><span>&#9888;&#65039;</span><p>This guide may contain affiliate links. If you purchase through these links I may earn a small commission at no extra cost to you. I only recommend products I have personally used. <a href="/terms/">Learn more</a></p></div>
+  <div class="post-body"><h2>PETG Is Not Hard. It's Just Not PLA.</h2>
+<p>Everybody's first PETG print goes the same way. You hear it's stronger than PLA, more heat resistant, great for functional parts. You load it, keep your PLA profile, bump the temps because the spool says so, and hit print.</p>
+<p>What you get: strings like a haunted house, blobs welded to the print, and — if you're really lucky — a chunk of your PEI sheet ripped clean off when you remove the part.</p>
+<p>PETG fails when you print it like PLA. It's a different material with different rules, and once you set it up right, it's one of the most reliable filaments there is. Here's the full setup.</p>
+<h2>The Settings</h2>
+<p><strong>Nozzle: 230–245°C.</strong> Start at 235. Too cold and layers don't bond (PETG's whole reason for existing is layer strength). Too hot and it strings and blobs worse.</p>
+<p><strong>Bed: 75–85°C.</strong> PETG wants a hot bed and holds onto it hard — which leads to the next point.</p>
+<p><strong>Protect your build plate.</strong> This is the one nobody warns you about: PETG bonds to smooth PEI <em>too well</em>. It can tear the coating off the sheet when you remove the part. Two options:
+- Use a <strong>textured</strong> PEI sheet — the texture limits contact area and parts pop off when the bed cools.
+- On smooth PEI or glass, put down a thin layer of <strong>glue stick or unscented hairspray</strong> first. It's not for adhesion — it's a <em>release layer</em> so the part lets go.</p>
+<p><strong>First layer: back OFF the squish.</strong> Opposite of PLA. PETG hates being smushed into the bed — it wads up around the nozzle and drags blobs across the print. Raise your Z-offset slightly from your PLA setting (about 0.02–0.04 mm) so the first layer is laid on rather than pressed in. The hot bed does the gripping.</p>
+<p><strong>Speed: slow down.</strong> 40–50 mm/s for outer walls. PETG is thicker and lazier than PLA out of the nozzle; give it time. Modern fast printers with input shaping handle more, but if you're troubleshooting, slow is where you start.</p>
+<p><strong>Fan: 30–50%, not 100%.</strong> Full cooling kills PETG's layer bonding — parts snap along layer lines. Run 30–50% for general printing; go up only for bridges and overhangs (most slicers let you set a separate bridging fan speed). For maximum-strength parts, run even less fan and accept slightly softer details.</p>
+<p><strong>Retraction: tune it again.</strong> Your PLA retraction numbers are wrong for PETG. It's stringier by nature — expect to add a little distance and reduce nozzle temp before chasing perfection. (Full process in my <a href="/guides/3d-print-stringing/">stringing guide</a>.) Also expect <em>some</em> fine wisps no matter what. That's PETG. A two-second pass with a heat gun clears them.</p>
+<h2>Dry It. Seriously.</h2>
+<p>PETG drinks moisture out of the air faster than almost anything except nylon. Wet PETG pops and crackles at the nozzle, strings uncontrollably, and prints cloudy and brittle.</p>
+<p>I live in Florida. A spool left out here in the open is compromised in under two weeks — I've watched the same spool go from clean prints to fuzz with zero settings changes. If your PETG printed fine a month ago and looks bad now, dry it before you touch one setting.</p>
+<p>A filament dryer pays for itself the first time it saves you from re-buying a "bad" spool that was just wet. Store spools in a sealed bin with desiccant between uses.</p>
+<h2>What PETG Is For (And Not For)</h2>
+<p>Worth knowing what you bought:</p>
+<ul>
+<li><strong>Use it for:</strong> brackets, clips, enclosures, outdoor parts (UV-resistant), anything near heat that PLA would sag in, parts that flex slightly instead of snapping. Most of the printed fixtures and brackets around my shop are PETG.</li>
+<li><strong>Skip it for:</strong> fine miniatures and sharp detail (PLA wins), parts needing zero stringing cleanup, anything you'll sand and paint (PETG sands gummy).</li>
+</ul>
+<p>One of the most useful PETG prints I've done are the little clips that hold the metal hooks on pegboards. In one of my shops, which is not air conditioned, I have both walls lined with pegboard and every single hook or holder has a printed PETG clip to stop the hooks from moving when I remove a tool. It's the simple things that make life a lot easier. I got the design from <a href="https://www.thingiverse.com/">Thingiverse</a> — search "pegboard hook clip" and you'll find a dozen versions.</p>
+<h2>One Profile Per Brand — and Keep the Receipts</h2>
+<p>Here's the thing about PETG that makes record-keeping matter more than with PLA: brands vary wildly. One brand's PETG runs perfect at 235°C; another strings until you hit 228. You will end up with a different tuned profile for every brand on your shelf, and six months from now you won't remember which was which.</p>
+<p>Every one of those tuned profiles is already written into the G-code files you printed with. <a href="https://triedandmade.com/shop">3DPrintLogPro</a> reads them all out automatically — temps, retraction, speeds, fan, all of it — and logs each print with its filament brand and a success/fail status. Reload a brand you haven't run since spring, search it, and you're printing on a proven profile instead of starting over. You can even export the settings straight back out as a slicer profile.</p>
+<p>That's the entire reason the app exists. I had the sticky notes to prove it.</p>
+<h2>Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>PLA habit</th>
+<th>PETG reality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nozzle</td>
+<td>200–215°C</td>
+<td>230–245°C</td>
+</tr>
+<tr>
+<td>Bed</td>
+<td>60°C</td>
+<td>75–85°C</td>
+</tr>
+<tr>
+<td>First layer</td>
+<td>Squished in</td>
+<td>Backed off — laid on</td>
+</tr>
+<tr>
+<td>Fan</td>
+<td>100%</td>
+<td>30–50%</td>
+</tr>
+<tr>
+<td>Smooth PEI</td>
+<td>Fine</td>
+<td>Glue stick release layer or textured sheet</td>
+</tr>
+<tr>
+<td>Wet spool tolerance</td>
+<td>Forgiving</td>
+<td>Almost none — dry it</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Got a PETG problem this didn't cover? <a href="mailto:info@triedandmade.com">Email me</a> — I read every one.</p>
+<p>— Danny</p></div>
+  <div class="post-nav"><a href="/guides/" class="btn-secondary">&#8592; Back to all guides</a></div>
+</div>
+
+<section class="more-guides">
+  <div class="more-guides-inner">
+    <h3>More Guides</h3>
+    <div class="more-guides-grid">
+      <a href="/guides/3d-print-stringing/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>3D Print Stringing: How to Actually Fix It (Not Just Hide It)</h4>
+        <p>Spider webs between every part of your print? Stringing comes down to four causes. Here&#x27;s how to fix</p>
+      </a>
+      <a href="/guides/first-layer-z-offset/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>First Layer Too Squished or Too High? How to Read It and Fix Your Z-Offset</h4>
+        <p>Your first layer tells you exactly what&#x27;s wrong — if you know how to read it. Here&#x27;s how to dial in </p>
+      </a>
+      <a href="/guides/print-failed-halfway/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>Why Did My 3D Print Fail Halfway Through? Read the Wreckage</h4>
+        <p>A print that dies at hour 9 left evidence behind. Spaghetti, a shifted layer, a clean stop — each fa</p>
+      </a>
+      <a href="/guides/print-not-sticking-to-bed/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>3D Print Not Sticking to the Bed? Fix It in Order, Not at Random</h4>
+        <p>First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that ke</p>
+      </a>
+    </div>
+    <a href="/guides/" class="btn-secondary" style="display:inline-block;margin-top:1.5rem">Browse all guides &#8594;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="/" class="logo">Tried<span>&amp;</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li><li><a href="/guides/?cat=Machining">Machining</a></li><li><a href="/guides/?cat=HVAC">HVAC</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/about/">About</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>&#169; 2026 TriedAndMade.com</p><span class="footer-email">info@triedandmade.com</span></div>
+</footer>
+
+<div id="gdpr-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1c1c1a;border-top:1px solid #2e2e2b;padding:16px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <p style="margin:0;font-size:13px;color:#8a8880;max-width:700px;line-height:1.6;">
+    This site uses Cloudflare analytics (cookie-free) and may use essential cookies for security. By continuing to use this site you accept our
+    <a href="/privacy/" style="color:#E8920A;">Privacy Policy</a>.
+    <strong style="color:#e8e6df;">No advertising or tracking cookies are used.</strong>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="acceptGDPR()" style="background:#E8920A;color:#1a0e00;border:none;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">Accept</button>
+    <button onclick="declineGDPR()" style="background:transparent;color:#8a8880;border:1px solid #2e2e2b;padding:8px 20px;border-radius:6px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+function acceptGDPR(){localStorage.setItem('gdpr','accepted');document.getElementById('gdpr-banner').style.display='none';}
+function declineGDPR(){localStorage.setItem('gdpr','declined');document.getElementById('gdpr-banner').style.display='none';}
+(function(){if(!localStorage.getItem('gdpr')){var b=document.getElementById('gdpr-banner');b.style.display='flex';}})();
+</script>
+</body>
+</html>

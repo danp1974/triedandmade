@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Print Not Sticking to the Bed? Fix It in Order, Not at Random | TriedAndMade</title>
+<meta name="description" content="First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that keeps the problem from coming back.">
+<link rel="canonical" href="https://triedandmade.com/guides/print-not-sticking-to-bed/">
+<meta property="og:title" content="3D Print Not Sticking to the Bed? Fix It in Order, Not at Random">
+<meta property="og:description" content="First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that keeps the problem from coming back.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://triedandmade.com/guides/print-not-sticking-to-bed/">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.post-wrap{max-width:780px;margin:0 auto;padding:50px 2rem 80px}
+.post-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);margin-bottom:2rem;transition:color 0.2s}
+.post-back:hover{color:var(--amber)}
+.post-back::before{content:'←'}
+.post-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.post-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;margin-bottom:16px}
+.post-meta{font-size:13px;color:var(--text-dim);margin-bottom:2rem;display:flex;gap:1.5rem}
+.post-desc{font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-body{font-size:16px;line-height:1.8;color:var(--text)}
+.post-body h1,.post-body h2,.post-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;margin:2rem 0 0.75rem;color:var(--text)}
+.post-body h1{font-size:32px}
+.post-body h2{font-size:26px}
+.post-body h3{font-size:20px}
+.post-body p{margin-bottom:1.25rem}
+.post-body ul,.post-body ol{margin:0 0 1.25rem 1.5rem}
+.post-body li{margin-bottom:6px}
+.post-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:13px;font-family:monospace;color:var(--amber-light)}
+.post-body pre{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;overflow-x:auto}
+.post-body pre code{background:none;padding:0;color:var(--text)}
+.post-body blockquote{border-left:3px solid var(--amber);padding-left:1.25rem;margin-bottom:1.25rem;color:var(--text-muted);font-style:italic}
+.post-body img{max-width:100%;border-radius:8px;margin:1rem 0;border:1px solid var(--border)}
+.post-body a{color:var(--amber);text-decoration:underline;text-decoration-color:var(--amber-dim)}
+.post-body hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.post-body strong{color:var(--text);font-weight:600}
+.post-nav{display:flex;justify-content:flex-start;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.affiliate-notice{display:flex;align-items:flex-start;gap:10px;background:rgba(232,146,10,0.08);border:1px solid var(--amber-dim);border-radius:6px;padding:12px 16px;margin-bottom:2rem;font-size:13px;color:var(--text-muted);line-height:1.6}
+.affiliate-notice span{font-size:16px;flex-shrink:0;margin-top:2px}
+.affiliate-notice p{margin:0}
+.affiliate-notice a{color:var(--amber)}
+.more-guides{background:var(--surface);border-top:1px solid var(--border);padding:50px 2rem}
+.more-guides-inner{max-width:780px;margin:0 auto}
+.more-guides-inner h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:1.25rem}
+.more-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.more-guide-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color 0.2s;display:block;text-decoration:none}
+.more-guide-card:hover{border-color:var(--amber-dim)}
+.more-guide-card .mg-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.more-guide-card h4{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:6px;color:var(--text)}
+.more-guide-card p{font-size:12px;color:var(--text-muted);line-height:1.5;margin:0}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&amp;</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/" style="color:var(--amber)">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+</div>
+<script>(function(){document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('nav-mobile').classList.toggle('open');});})();</script>
+
+<div class="post-wrap">
+  <a href="/guides/" class="post-back">Back to all guides</a>
+  <div class="post-tag">3D Printing</div>
+  <h1 class="post-title">3D Print Not Sticking to the Bed? Fix It in Order, Not at Random</h1>
+  <div class="post-meta"><span>June 14, 2026</span></div>
+  <p class="post-desc">First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that keeps the problem from coming back.</p>
+  <div class="affiliate-notice"><span>&#9888;&#65039;</span><p>This guide may contain affiliate links. If you purchase through these links I may earn a small commission at no extra cost to you. I only recommend products I have personally used. <a href="/terms/">Learn more</a></p></div>
+  <div class="post-body"><h2>We've All Been There</h2>
+<p>You start a print, walk away, and come back to a bird's nest of filament dragging around the bed. Or worse — the first layer looked fine, and you found out six hours in that it wasn't.</p>
+<p>When this happened to me on my Ender 5 Plus, I did what everybody does: I changed five settings at once, the next print stuck, and I had absolutely no idea which change fixed it. Three months later the problem came back and I was starting from zero.</p>
+<p>So here's the deal. There are really only five causes, and they fail in a predictable order of likelihood. Work through them in order. Change one thing at a time. And write down what you changed — more on that at the end, because losing track of what worked is its own problem.</p>
+<h2>1. Your Bed Is Dirty (Yes, Really)</h2>
+<p>This is the cause more often than everything else on this list combined, and it's the one everybody skips because it feels too simple.</p>
+<p>Every time you touch the build plate, you leave skin oil on it. PLA will not bond through a fingerprint. A bed that "was fine yesterday" and won't stick today is usually just dirty.</p>
+<p>The fix: wash the plate with warm water and a drop of dish soap, then dry it with a paper towel. Isopropyl alcohol between prints is fine for maintenance — but IPA smears oil around as much as it removes it. Soap and water is the reset button.</p>
+<p>Handle the plate by the edges from now on. If a freshly washed bed fixes it, you're done. If not, keep going.</p>
+<h2>2. Your First Layer Height Is Wrong</h2>
+<p>This covers most of the rest. The first layer needs to be <em>squished</em> into the bed — not resting on top of it, and not scraped so thin you can see through it.</p>
+<p>Watch your first layer go down and read it like this:</p>
+<ul>
+<li><strong>Lines look like round spaghetti with gaps between them</strong> — nozzle too high. The plastic is being laid on the bed instead of pressed into it.</li>
+<li><strong>Lines are flat and slightly ironed together, no gaps</strong> — that's correct. Leave it alone.</li>
+<li><strong>Lines are see-through, edges curling, nozzle clicking or skipping</strong> — too low.</li>
+</ul>
+<p>Adjust your Z-offset in 0.02–0.05 mm steps while the first layer is printing — most firmware lets you baby-step it live. Watch the line change as you turn the knob. Those two minutes will teach you more than any YouTube video.</p>
+<p>Adjusting the Z-offset value in the positive direction will move the nozzle away from the bed; decreasing the Z-offset will bring the nozzle closer to the bed.</p>
+<p>One more thing: if you're re-leveling constantly, the leveling isn't the problem. On the Ender 5 Plus, the bed rides on dual lead screws — if those get out of sync, no amount of corner-leveling will ever hold. Check the mechanics before you blame the settings. There are several printable jigs available on sites like <a href="https://www.thingiverse.com/">Thingiverse</a> and <a href="https://www.printables.com/">Printables</a> that can help align dual lead screws.</p>
+<h2>3. Bed Temp Too Low — or a Draft You Haven't Noticed</h2>
+<p>Plastic sticks to a bed that keeps it just soft at the contact point. Starting points that work:</p>
+<ul>
+<li><strong>PLA:</strong> 60°C</li>
+<li><strong>PETG:</strong> 75–85°C</li>
+<li><strong>ABS:</strong> 100–110°C, and honestly, an enclosure</li>
+</ul>
+<p>Here's the one people miss: airflow. I'm in Central Florida, and I spent years working in attics where even the slightest breeze through a soffit vent could give you chills in 140°F heat — your body reacts to moving air that fast. A heated build plate is the same way. A printer sitting in the path of an AC vent or a garage door draft will curl corners all day long with otherwise perfect settings. Block the draft — an enclosure, or even a cardboard box over the printer — and the problem disappears.</p>
+<p>I picked up a simple fireproof enclosure tent — the kind that fits an Ender 5 Plus or CR-10 — and it made a world of difference. Definitely one of the better upgrades I've made.</p>
+<h2>4. First Layer Speed Is Too Fast</h2>
+<p>The first layer needs time to bond. If your slicer runs it at full speed, the plastic gets dragged before it grips. Think of it as more of a smear than a bonding layer.</p>
+<p>Set first layer speed to 20–25 mm/s. Yes, it adds a few minutes to the print. A failed print adds hours.</p>
+<p>While you're in the slicer, check two more first-layer settings: nozzle temp about 5°C hotter than the rest of the print, and bump your first layer height slightly above your normal layer height — if you're printing at 0.2 mm layers, try a first layer of 0.23–0.25 mm; if you're at 0.3 mm, try 0.33–0.35 mm. That little extra squish helps embed the first layer into the build plate. Most default profiles do this already — but if you've been tweaking settings for months, you'd be surprised what you've actually got in there.</p>
+<h2>5. Your Build Surface Is Worn Out — or Wrong for the Material</h2>
+<p>PEI sheets lose their grip over time. Thousands of heat cycles and scraper passes eventually polish the texture right off. If a plate that worked for a year slowly got worse, it's the plate. Not you.</p>
+<p>And materials matter:</p>
+<ul>
+<li><strong>PETG on smooth PEI sticks TOO well</strong> — it can rip chunks out of the surface on removal. Use textured PEI, or a glue stick layer as a release agent.</li>
+<li><strong>Glass beds</strong> want a thin layer of glue stick or unscented hairspray for anything including PLA. Whatever you use, make sure it's a thin layer — too much causes issues with adhesion as well.</li>
+</ul>
+<h2>The Part Nobody Tells You</h2>
+<p>Here's the trap waiting at the end of this guide. You wash the bed, fix the Z-offset, bump the temp, and slow the first layer — all in the same afternoon. The next print sticks. Great. <em>Which one fixed it?</em></p>
+<p>You don't know. I didn't either. That's how I ended up with sticky notes all over my desk and a drawer full of guesses.</p>
+<p>Every setting I just talked about is already written into your G-code file — your slicer embeds all of it, around 356 settings in PrusaSlicer alone. I got tired of digging through G-code in Notepad to figure out what my last good print used, so I built <a href="https://triedandmade.com/shop">3DPrintLogPro</a>. It reads every setting out of every G-code file automatically, logs it in a searchable database, and lets you mark each print success or fail. When something works, you know exactly what "working" was — forever.</p>
+<p>I built it because I needed it. If it saves you one roll of filament, that's why I made it.</p>
+<h2>Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Most likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stuck yesterday, not today</td>
+<td>Dirty bed</td>
+<td>Soap and water wash</td>
+</tr>
+<tr>
+<td>Round lines with gaps</td>
+<td>Nozzle too high</td>
+<td>Lower Z-offset in 0.02 mm steps</td>
+</tr>
+<tr>
+<td>Corners curling up</td>
+<td>Bed temp or a draft</td>
+<td>+5°C bed, block the airflow</td>
+</tr>
+<tr>
+<td>Plastic drags instead of grips</td>
+<td>First layer too fast</td>
+<td>20–25 mm/s first layer</td>
+</tr>
+<tr>
+<td>Slow decline over months</td>
+<td>Worn PEI sheet</td>
+<td>Replace it</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Still stuck, or got a problem this didn't cover? <a href="mailto:info@triedandmade.com">Send me an email</a> — I read every one.</p>
+<p>— Danny</p></div>
+  <div class="post-nav"><a href="/guides/" class="btn-secondary">&#8592; Back to all guides</a></div>
+</div>
+
+<section class="more-guides">
+  <div class="more-guides-inner">
+    <h3>More Guides</h3>
+    <div class="more-guides-grid">
+      <a href="/guides/3d-print-stringing/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>3D Print Stringing: How to Actually Fix It (Not Just Hide It)</h4>
+        <p>Spider webs between every part of your print? Stringing comes down to four causes. Here&#x27;s how to fix</p>
+      </a>
+      <a href="/guides/first-layer-z-offset/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>First Layer Too Squished or Too High? How to Read It and Fix Your Z-Offset</h4>
+        <p>Your first layer tells you exactly what&#x27;s wrong — if you know how to read it. Here&#x27;s how to dial in </p>
+      </a>
+      <a href="/guides/petg-settings/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>PETG Settings That Actually Work (And Why Yours Don&#x27;t)</h4>
+        <p>PETG promises strength and delivers blobs, strings, and chunks ripped out of your build plate — unti</p>
+      </a>
+      <a href="/guides/print-failed-halfway/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>Why Did My 3D Print Fail Halfway Through? Read the Wreckage</h4>
+        <p>A print that dies at hour 9 left evidence behind. Spaghetti, a shifted layer, a clean stop — each fa</p>
+      </a>
+    </div>
+    <a href="/guides/" class="btn-secondary" style="display:inline-block;margin-top:1.5rem">Browse all guides &#8594;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="/" class="logo">Tried<span>&amp;</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li><li><a href="/guides/?cat=Machining">Machining</a></li><li><a href="/guides/?cat=HVAC">HVAC</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/about/">About</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>&#169; 2026 TriedAndMade.com</p><span class="footer-email">info@triedandmade.com</span></div>
+</footer>
+
+<div id="gdpr-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1c1c1a;border-top:1px solid #2e2e2b;padding:16px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <p style="margin:0;font-size:13px;color:#8a8880;max-width:700px;line-height:1.6;">
+    This site uses Cloudflare analytics (cookie-free) and may use essential cookies for security. By continuing to use this site you accept our
+    <a href="/privacy/" style="color:#E8920A;">Privacy Policy</a>.
+    <strong style="color:#e8e6df;">No advertising or tracking cookies are used.</strong>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="acceptGDPR()" style="background:#E8920A;color:#1a0e00;border:none;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">Accept</button>
+    <button onclick="declineGDPR()" style="background:transparent;color:#8a8880;border:1px solid #2e2e2b;padding:8px 20px;border-radius:6px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+function acceptGDPR(){localStorage.setItem('gdpr','accepted');document.getElementById('gdpr-banner').style.display='none';}
+function declineGDPR(){localStorage.setItem('gdpr','declined');document.getElementById('gdpr-banner').style.display='none';}
+(function(){if(!localStorage.getItem('gdpr')){var b=document.getElementById('gdpr-banner');b.style.display='flex';}})();
+</script>
+</body>
+</html>

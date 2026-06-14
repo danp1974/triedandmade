@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Did My 3D Print Fail Halfway Through? Read the Wreckage | TriedAndMade</title>
+<meta name="description" content="A print that dies at hour 9 left evidence behind. Spaghetti, a shifted layer, a clean stop — each failure looks different and points to a different cause. Here&#x27;s how to read it.">
+<link rel="canonical" href="https://triedandmade.com/guides/print-failed-halfway/">
+<meta property="og:title" content="Why Did My 3D Print Fail Halfway Through? Read the Wreckage">
+<meta property="og:description" content="A print that dies at hour 9 left evidence behind. Spaghetti, a shifted layer, a clean stop — each failure looks different and points to a different cause. Here&#x27;s how to read it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://triedandmade.com/guides/print-failed-halfway/">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.post-wrap{max-width:780px;margin:0 auto;padding:50px 2rem 80px}
+.post-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);margin-bottom:2rem;transition:color 0.2s}
+.post-back:hover{color:var(--amber)}
+.post-back::before{content:'←'}
+.post-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.post-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;margin-bottom:16px}
+.post-meta{font-size:13px;color:var(--text-dim);margin-bottom:2rem;display:flex;gap:1.5rem}
+.post-desc{font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-body{font-size:16px;line-height:1.8;color:var(--text)}
+.post-body h1,.post-body h2,.post-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;margin:2rem 0 0.75rem;color:var(--text)}
+.post-body h1{font-size:32px}
+.post-body h2{font-size:26px}
+.post-body h3{font-size:20px}
+.post-body p{margin-bottom:1.25rem}
+.post-body ul,.post-body ol{margin:0 0 1.25rem 1.5rem}
+.post-body li{margin-bottom:6px}
+.post-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:13px;font-family:monospace;color:var(--amber-light)}
+.post-body pre{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;overflow-x:auto}
+.post-body pre code{background:none;padding:0;color:var(--text)}
+.post-body blockquote{border-left:3px solid var(--amber);padding-left:1.25rem;margin-bottom:1.25rem;color:var(--text-muted);font-style:italic}
+.post-body img{max-width:100%;border-radius:8px;margin:1rem 0;border:1px solid var(--border)}
+.post-body a{color:var(--amber);text-decoration:underline;text-decoration-color:var(--amber-dim)}
+.post-body hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.post-body strong{color:var(--text);font-weight:600}
+.post-nav{display:flex;justify-content:flex-start;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.affiliate-notice{display:flex;align-items:flex-start;gap:10px;background:rgba(232,146,10,0.08);border:1px solid var(--amber-dim);border-radius:6px;padding:12px 16px;margin-bottom:2rem;font-size:13px;color:var(--text-muted);line-height:1.6}
+.affiliate-notice span{font-size:16px;flex-shrink:0;margin-top:2px}
+.affiliate-notice p{margin:0}
+.affiliate-notice a{color:var(--amber)}
+.more-guides{background:var(--surface);border-top:1px solid var(--border);padding:50px 2rem}
+.more-guides-inner{max-width:780px;margin:0 auto}
+.more-guides-inner h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:1.25rem}
+.more-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.more-guide-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color 0.2s;display:block;text-decoration:none}
+.more-guide-card:hover{border-color:var(--amber-dim)}
+.more-guide-card .mg-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.more-guide-card h4{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:6px;color:var(--text)}
+.more-guide-card p{font-size:12px;color:var(--text-muted);line-height:1.5;margin:0}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Tried<span>&amp;</span>Made</a>
+  <ul class="nav-links">
+    <li><a href="/guides/" style="color:var(--amber)">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+  <a href="/guides/" class="nav-cta">Find a Fix</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/shop/">Shop Files</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="mailto:info@triedandmade.com">Contact</a></li>
+  </ul>
+</div>
+<script>(function(){document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('nav-mobile').classList.toggle('open');});})();</script>
+
+<div class="post-wrap">
+  <a href="/guides/" class="post-back">Back to all guides</a>
+  <div class="post-tag">3D Printing</div>
+  <h1 class="post-title">Why Did My 3D Print Fail Halfway Through? Read the Wreckage</h1>
+  <div class="post-meta"><span>June 14, 2026</span></div>
+  <p class="post-desc">A print that dies at hour 9 left evidence behind. Spaghetti, a shifted layer, a clean stop — each failure looks different and points to a different cause. Here&#x27;s how to read it.</p>
+  <div class="affiliate-notice"><span>&#9888;&#65039;</span><p>This guide may contain affiliate links. If you purchase through these links I may earn a small commission at no extra cost to you. I only recommend products I have personally used. <a href="/terms/">Learn more</a></p></div>
+  <div class="post-body"><h2>The Worst Kind of Failure</h2>
+<p>A print failing in the first ten minutes costs you ten minutes. A print failing at hour nine of fourteen costs you a day, half a spool, and a little piece of your soul.</p>
+<p>Here's the good news: a mid-print failure almost always leaves evidence, and each cause leaves <em>different</em> evidence. Don't clear the bed yet. Look at the wreckage first — it'll tell you which of these five things happened.</p>
+<h2>1. Spaghetti on Top of a Good Print: The Part Came Loose</h2>
+<p>If the bottom portion printed fine and then there's a bird's nest piled on top, the part detached from the bed (or from its supports) partway up, and the printer kept extruding into the air.</p>
+<p>Tall narrow prints are the usual victim — the nozzle bumps the part thousands of times, and a small footprint eventually lets go. Fixes:</p>
+<ul>
+<li>Bed adhesion first — full walkthrough in my <a href="/guides/print-not-sticking-to-bed/">bed adhesion guide</a></li>
+<li>Add a <strong>brim</strong> for tall/narrow parts — more footprint, more grip</li>
+<li>In your slicer, enable <strong>Z-hop on retract</strong> so the nozzle lifts slightly during travels instead of dragging across the top of the part</li>
+<li>Check for <strong>drafts</strong> — a part that holds for 6 hours and lets go overnight often let go when the room temperature changed</li>
+</ul>
+<h2>2. The Print Shifted Sideways and Kept Going</h2>
+<p>Everything below a certain layer is perfect; everything above it is offset, like someone slid the top of the print over. That's a <strong>layer shift</strong> — the printhead or bed lost position and the printer, having no idea, kept printing in the new spot.</p>
+<p>Causes, most common first:</p>
+<ul>
+<li><strong>Loose belt:</strong> pluck the X and Y belts like guitar strings. They should give a low note, not flop. Tension them per your printer's manual.</li>
+<li><strong>Collision:</strong> a curled-up edge or a blob of plastic that the nozzle slammed into hard enough to skip the motor. If you find one shifted layer right at a blob, that's your answer.</li>
+<li><strong>Loose pulley grub screw:</strong> the tiny set screw holding the motor pulley works loose, and the pulley slips on the shaft. Check it with a hex key — this one is famous for causing "random" shifts.</li>
+<li><strong>Too fast / too hot motor drivers:</strong> less common, but printing very fast in a hot enclosure can overheat stepper drivers, which skip when they thermally cut out.</li>
+</ul>
+<h2>3. Nothing Coming Out: Clog or Runout</h2>
+<p>The print stops getting plastic but the printer keeps moving — you come back to a half-finished part with the nozzle "air printing" above it.</p>
+<ul>
+<li><strong>Filament ran out</strong> and you don't have a runout sensor. The fix is a runout sensor — most modern boards support one, and it pauses the print instead of killing it.</li>
+<li><strong>The spool tangled.</strong> A loop slipped under another loop on the spool and pulled tight until the extruder couldn't win. This is almost always self-inflicted — it happens when a loose end was let go during a filament change. Keep the end clipped to the spool, always, and use a spool holder that turns freely.</li>
+<li><strong>Heat creep clog:</strong> the hotend slowly jammed mid-print, usually on long prints with lots of slow sections. Filament softened too high up in the hotend and stuck. Check that the hotend cooling fan (not the part fan — the one on the heatsink) is actually spinning; a dying heatsink fan is the #1 cause. A cold pull clears the clog; replacing the fan stops it from coming back.</li>
+<li><strong>Ground-down filament:</strong> look at the filament at the extruder — if there's a chewed divot, the extruder gear ground through it after the clog started. Clear the clog, snip past the damage, and brush the gear teeth clean.</li>
+</ul>
+<h2>4. It Just... Stopped. Cleanly.</h2>
+<p>The print ends mid-layer with no spaghetti, no shift, no grinding — like someone hit pause and never came back.</p>
+<ul>
+<li><strong>Thermal runaway protection tripped.</strong> The firmware saw the hotend or bed temperature misbehaving and shut down on purpose. That's the printer protecting your house — take it seriously. Usual culprits: a loose thermistor, a failing heater cartridge connector, or a part-cooling fan blowing across the nozzle harder than the heater can fight. Spent enough years around HVAC controls to tell you: when a safety cuts equipment off, the safety is rarely the problem. Find what tripped it.</li>
+<li><strong>Power blip.</strong> Florida summer storms ask your printer a question every afternoon. Some printers have power-loss recovery; a small UPS is better.</li>
+<li><strong>The computer fell asleep.</strong> If you print over USB from a PC or laptop, the PC sleeping kills the print. Print from SD/internal storage, or run a dedicated Pi with OctoPrint — that's how I run mine, and it also gives you a camera to check on prints remotely instead of wondering all day.</li>
+</ul>
+<h2>5. It Failed at the Exact Same Height. Twice.</h2>
+<p>If the failure repeats at the same layer every attempt, stop blaming hardware — it's the <strong>file</strong>. A bad layer in the model or a slicer hiccup at that Z height. Re-slice the model; if it still dies there, run the STL through a mesh repair (most slicers have one built in) or re-export it. A corrupted SD card does this too — re-copy the G-code or try another card.</p>
+<h2>The Question That Actually Matters</h2>
+<p>When a long print fails, the first question is "what happened?" — that's what this guide is for. The second question is the one that saves the <em>next</em> fourteen hours: <strong>"what settings was I running the last time this exact print worked?"</strong></p>
+<p>Most people can't answer it. The G-code file knows — your slicer wrote every setting into it, all several hundred of them — but nobody's digging through G-code in Notepad at 11pm. That's why I built <a href="https://triedandmade.com/shop">3DPrintLogPro</a>. It reads every setting out of every file automatically and logs each print as a success or failure. When something dies at hour nine, you pull up the last success, compare, and see exactly what changed. The Folder Watcher even logs every file your slicer saves without you lifting a finger.</p>
+<p>I built it standing next to a failed overnight print, holding a sticky note that didn't have the answer on it.</p>
+<h2>Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>The wreckage</th>
+<th>What happened</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spaghetti on a good base</td>
+<td>Part detached mid-print</td>
+<td>Adhesion, brim, Z-hop</td>
+</tr>
+<tr>
+<td>Top offset from bottom</td>
+<td>Layer shift</td>
+<td>Belts, pulley grub screws, collisions</td>
+</tr>
+<tr>
+<td>Air-printing, no plastic</td>
+<td>Runout, tangle, or clog</td>
+<td>Runout sensor, check heatsink fan, cold pull</td>
+</tr>
+<tr>
+<td>Clean stop, mid-layer</td>
+<td>Thermal protection or power</td>
+<td>Find what tripped it; UPS</td>
+</tr>
+<tr>
+<td>Same layer every time</td>
+<td>Bad file</td>
+<td>Re-slice, repair mesh, re-copy card</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Got wreckage that doesn't match any of these? <a href="mailto:info@triedandmade.com">Email me a photo</a> — I read every one.</p>
+<p>— Danny</p></div>
+  <div class="post-nav"><a href="/guides/" class="btn-secondary">&#8592; Back to all guides</a></div>
+</div>
+
+<section class="more-guides">
+  <div class="more-guides-inner">
+    <h3>More Guides</h3>
+    <div class="more-guides-grid">
+      <a href="/guides/3d-print-stringing/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>3D Print Stringing: How to Actually Fix It (Not Just Hide It)</h4>
+        <p>Spider webs between every part of your print? Stringing comes down to four causes. Here&#x27;s how to fix</p>
+      </a>
+      <a href="/guides/first-layer-z-offset/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>First Layer Too Squished or Too High? How to Read It and Fix Your Z-Offset</h4>
+        <p>Your first layer tells you exactly what&#x27;s wrong — if you know how to read it. Here&#x27;s how to dial in </p>
+      </a>
+      <a href="/guides/petg-settings/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>PETG Settings That Actually Work (And Why Yours Don&#x27;t)</h4>
+        <p>PETG promises strength and delivers blobs, strings, and chunks ripped out of your build plate — unti</p>
+      </a>
+      <a href="/guides/print-not-sticking-to-bed/" class="more-guide-card">
+        <div class="mg-tag">3D Printing</div>
+        <h4>3D Print Not Sticking to the Bed? Fix It in Order, Not at Random</h4>
+        <p>First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that ke</p>
+      </a>
+    </div>
+    <a href="/guides/" class="btn-secondary" style="display:inline-block;margin-top:1.5rem">Browse all guides &#8594;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="/" class="logo">Tried<span>&amp;</span>Made</a><p>Real fixes for real makers. No fluff, no circles.</p></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="/guides/?cat=Laser Engraving">Laser Engraving</a></li><li><a href="/guides/?cat=3D Printing">3D Printing</a></li><li><a href="/guides/?cat=CNC Routing">CNC Routing</a></li><li><a href="/guides/?cat=Machining">Machining</a></li><li><a href="/guides/?cat=HVAC">HVAC</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="/">Home</a></li><li><a href="/shop/">Shop</a></li><li><a href="/about/">About</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@triedandmade.com">info@triedandmade.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>&#169; 2026 TriedAndMade.com</p><span class="footer-email">info@triedandmade.com</span></div>
+</footer>
+
+<div id="gdpr-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1c1c1a;border-top:1px solid #2e2e2b;padding:16px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <p style="margin:0;font-size:13px;color:#8a8880;max-width:700px;line-height:1.6;">
+    This site uses Cloudflare analytics (cookie-free) and may use essential cookies for security. By continuing to use this site you accept our
+    <a href="/privacy/" style="color:#E8920A;">Privacy Policy</a>.
+    <strong style="color:#e8e6df;">No advertising or tracking cookies are used.</strong>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="acceptGDPR()" style="background:#E8920A;color:#1a0e00;border:none;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">Accept</button>
+    <button onclick="declineGDPR()" style="background:transparent;color:#8a8880;border:1px solid #2e2e2b;padding:8px 20px;border-radius:6px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+function acceptGDPR(){localStorage.setItem('gdpr','accepted');document.getElementById('gdpr-banner').style.display='none';}
+function declineGDPR(){localStorage.setItem('gdpr','declined');document.getElementById('gdpr-banner').style.display='none';}
+(function(){if(!localStorage.getItem('gdpr')){var b=document.getElementById('gdpr-banner');b.style.display='flex';}})();
+</script>
+</body>
+</html>
