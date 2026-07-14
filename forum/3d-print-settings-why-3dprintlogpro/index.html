@@ -130,7 +130,7 @@
       return{slug:f.name.replace('.md',''),data:parseMeta(await r.text())};
     }));
     el.innerHTML=guides.map(g=>`
-      <a href="${g.data.url||'/guides/post/?slug='+g.slug}" class="more-guide-card">
+      <a href="${g.data.url||'/guides/'+g.slug+'/'}" class="more-guide-card">
         <div class="mg-tag">${g.data.category||'Guide'}</div>
         <h4>${g.data.title||g.slug}</h4>
         <p>${(g.data.description||'').substring(0,100)}</p>
