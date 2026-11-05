@@ -1,7 +1,8 @@
 ---
 title: "PETG Settings That Actually Work (And Why Yours Don't)"
+seo_title: "PETG Settings That Actually Work (And Why Yours Don't)"
 category: "3D Printing"
-description: "PETG promises strength and delivers blobs, strings, and chunks ripped out of your build plate — until you stop printing it like PLA. Here are the settings that work."
+description: "PETG promises strength and delivers blobs, strings, and torn-up build plates until you stop printing it like PLA. Here are settings that work."
 author: "Danny"
 date: "2026-06-14"
 ---

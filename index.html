@@ -138,7 +138,11 @@
   <a href="/guides/">View all →</a>
 </div>
 <div class="guides-grid" id="latest-guides">
-  <div class="loading">Loading guides...</div>
+<!-- GUIDES:START -->
+<a href="/forum/3d-print-settings-why-3dprintlogpro/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>3D Print Settings — Why I Built 3DPrintLogPro</h3><p>How a senior project deadline turned me into a maker — and why I built a tool to track every print setting automatically.</p></div><div class="guide-footer"><span>3D Printing</span><span>May 28, 2026</span></div></a>
+<a href="/guides/under-extrusion/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>Under-Extrusion: Gaps, Thin Walls, and a Clicking Extruder — Fixed in Order</h3><p>Gaps between lines, see-through walls, a clicking extruder: under-extrusion has six causes and they&#x27;re easy to tell apart. Work the list.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<a href="/guides/print-not-sticking-to-bed/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>3D Print Not Sticking to the Bed? Fix It in Order, Not at Random</h3><p>First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that keeps the problem from coming back.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<!-- GUIDES:END -->
 </div>
 
 <section class="product-strip">
@@ -146,7 +150,12 @@
     <h2>Downloads &amp; Files</h2>
     <p class="sub">Ready-to-run files tested on real machines. Buy once, use forever.</p>
     <div class="products-row" id="latest-products">
-      <div class="loading">Loading products...</div>
+      <a href="/shop/3dprintlogpro/" class="product-card">
+        <div class="p-icon">&#128421;&#65039;</div>
+        <h4>3DPrintLogPro</h4>
+        <p class="p-desc">Track your 3D prints like a pro. Log settings, monitor results, and export your data — built for every maker.</p>
+        <div class="price">$14.99</div>
+      </a>
     </div>
   </div>
 </section>
@@ -157,7 +166,7 @@
     <div class="name">Danny</div>
     <div class="title">Builder. Fixer. Maker.</div>
     <ul class="cred-list">
-      <li>A/C Contractor</li>
+      <li>Former A/C Contractor</li>
       <li>Utility Grid Operator</li>
       <li>Machinist</li>
       <li>Laser Engraving</li>
@@ -252,7 +261,7 @@ async function loadLatestGuides() {
     }));
     renderLatest([...PINNED_GUIDES, ...fetched].slice(0, 3));
   } catch(e) {
-    renderLatest(PINNED_GUIDES);
+    /* GitHub fetch failed: keep the static cards built by tools/build_guides.py */
   }
 }
 
@@ -263,7 +272,7 @@ async function loadLatestProducts() {
     if (!res.ok) throw new Error();
     const files = await res.json();
     const mdFiles = files.filter(f => f.name.endsWith('.md')).slice(0,4);
-    if (!mdFiles.length) { el.innerHTML = '<div class="loading">Products coming soon!</div>'; return; }
+    if (!mdFiles.length) return; /* keep the static product card */
     const products = await Promise.all(mdFiles.map(async f => {
       const r = await fetch(RAW + '/content/products/' + f.name);
       const text = await r.text();
@@ -277,7 +286,7 @@ async function loadLatestProducts() {
         <div class="price">$${p.data.price || ''}</div>
       </a>`).join('');
   } catch(e) {
-    el.innerHTML = '<div class="loading">Shop coming soon!</div>';
+    /* content/products missing or fetch failed: keep the static product card */
   }
 }
 

@@ -80,7 +80,21 @@
 </div>
 
 <div class="products-grid" id="products-grid">
-  <div class="empty">Loading products...</div>
+  <div class="product-card" id="3dprintlogpro">
+    <a href="/shop/3dprintlogpro/" class="product-thumb-link"><div class="product-thumb"><img src="/images/uploads/3DPrintLogPro_Thumbnail_600x600.png" alt="3DPrintLogPro" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove()"></div></a>
+    <div class="product-body">
+      <div class="product-tag">Software<span class="platform-badge">Windows</span></div>
+      <h3><a href="/shop/3dprintlogpro/">3DPrintLogPro</a></h3>
+      <p>Track your 3D prints like a pro. Log settings, monitor results, and export your data — built for every maker.</p>
+    </div>
+    <div class="product-footer">
+      <span class="price">$14.99</span>
+      <div class="product-btns">
+        <a href="/shop/3dprintlogpro/" class="learn-btn">Learn More</a>
+        <a href="https://triedandmade.com/get/3dprintlogpro" class="buy-btn" target="_blank" rel="noopener">Get It Now</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -163,7 +177,7 @@ async function loadProducts(){
     if(!res.ok)throw new Error();
     const files=await res.json();
     const mdFiles=files.filter(f=>f.name.endsWith('.md'));
-    if(!mdFiles.length){document.getElementById('products-grid').innerHTML='<div class="empty">Products coming soon!</div>';return;}
+    if(!mdFiles.length){allProducts=[...PINNED_PRODUCTS];renderProducts(allProducts);return;}
     allProducts=[...PINNED_PRODUCTS,...await Promise.all(mdFiles.map(async f=>{
       const r=await fetch(RAW+'/content/products/'+f.name);
       const text=await r.text();

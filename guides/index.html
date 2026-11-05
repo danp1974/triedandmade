@@ -72,7 +72,19 @@
 </div>
 
 <div class="guides-grid" id="guides-grid">
-  <div class="empty">Loading guides...</div>
+<!-- GUIDES:START -->
+<a href="/guides/under-extrusion/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>Under-Extrusion: Gaps, Thin Walls, and a Clicking Extruder — Fixed in Order</h3><p>Gaps between lines, see-through walls, a clicking extruder: under-extrusion has six causes and they&#x27;re easy to tell apart. Work the list.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<a href="/guides/print-not-sticking-to-bed/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>3D Print Not Sticking to the Bed? Fix It in Order, Not at Random</h3><p>First layer won&#x27;t stick? Here are the five causes in order of likelihood — and the one habit that keeps the problem from coming back.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<a href="/guides/print-failed-halfway/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>Why Did My 3D Print Fail Halfway Through? Read the Wreckage</h3><p>A print that dies at hour 9 leaves evidence. Spaghetti, a shifted layer, a clean stop: each points to a different cause. Here&#x27;s how to read it.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<a href="/guides/petg-settings/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>PETG Settings That Actually Work (And Why Yours Don&#x27;t)</h3><p>PETG promises strength and delivers blobs, strings, and torn-up build plates until you stop printing it like PLA. Here are settings that work.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<a href="/guides/first-layer-z-offset/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>First Layer Too Squished or Too High? How to Read It and Fix Your Z-Offset</h3><p>Your first layer tells you exactly what&#x27;s wrong, if you know how to read it. Dial in Z-offset, fix elephant&#x27;s foot, and stop re-leveling.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<a href="/guides/3d-print-stringing/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>3D Print Stringing: How to Actually Fix It (Not Just Hide It)</h3><p>Spider webs between every part of your print? Stringing comes down to four causes. Here&#x27;s how to fix them in order, with real retraction numbers.</p></div><div class="guide-footer"><span>3D Printing</span><span>June 14, 2026</span></div></a>
+<a href="/guides/heat-not-working/" class="guide-card"><div class="guide-thumb">&#127777;&#65039;</div><div class="guide-body"><div class="guide-tag">HVAC</div><h3>My Heat Isn&#x27;t Working — Check These 7 Things Before You Call a Tech</h3><p>Heat not working? 7 checks for Florida heat pumps, electric strip heat, and gas furnaces before you call a tech.</p></div><div class="guide-footer"><span>HVAC</span><span>June 6, 2026</span></div></a>
+<a href="/guides/ac-running-but-not-cooling/" class="guide-card"><div class="guide-thumb">&#127777;&#65039;</div><div class="guide-body"><div class="guide-tag">HVAC</div><h3>My AC Is Running But Not Cooling — Check These 8 Things Before You Call a Tech</h3><p>AC running but the house won&#x27;t cool? Work through these 8 simple checks before paying for a service call — from a former Florida HVAC contractor.</p></div><div class="guide-footer"><span>HVAC</span><span>June 6, 2026</span></div></a>
+<a href="/guides/ac-frozen-coil/" class="guide-card"><div class="guide-thumb">&#127777;&#65039;</div><div class="guide-body"><div class="guide-tag">HVAC</div><h3>My AC Has Ice on It — Why Is My Coil Frozen and How Do I Fix It?</h3><p>Ice on your AC? Here&#x27;s why an evaporator coil freezes, how to thaw it safely, and what to check before calling a tech.</p></div><div class="guide-footer"><span>HVAC</span><span>June 6, 2026</span></div></a>
+<a href="/guides/ac-clogged-drain-line/" class="guide-card"><div class="guide-thumb">&#127777;&#65039;</div><div class="guide-body"><div class="guide-tag">HVAC</div><h3>My AC Shut Off and Won&#x27;t Come Back On — How to Check and Clear a Clogged Drain Line</h3><p>AC shut off and won&#x27;t restart? In Florida it&#x27;s often a clogged condensate drain line. Here&#x27;s how to find and clear it in about 15 minutes.</p></div><div class="guide-footer"><span>HVAC</span><span>June 6, 2026</span></div></a>
+<a href="/forum/3d-print-settings-why-3dprintlogpro/" class="guide-card"><div class="guide-thumb">&#128424;&#65039;</div><div class="guide-body"><div class="guide-tag">3D Printing</div><h3>3D Print Settings — Why I Built 3DPrintLogPro</h3><p>How a senior project deadline turned me into a maker — and why I built a tool to track every print setting automatically.</p></div><div class="guide-footer"><span>3D Printing</span><span>May 28, 2026</span></div></a>
+<!-- GUIDES:END -->
 </div>
 
 <footer>
@@ -161,7 +173,7 @@ async function loadGuides(){
       document.querySelectorAll('.filter-btn').forEach(b=>{if(b.textContent===cat)b.classList.add('active');else b.classList.remove('active')});
     }
     filterGuides();
-  }catch(e){allGuides=[...PINNED_GUIDES];filterGuides();}
+  }catch(e){/* GitHub fetch failed: keep the static cards built by tools/build_guides.py */}
 }
 
 loadGuides();

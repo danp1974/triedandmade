@@ -1,5 +1,6 @@
 ---
 title: "My AC Is Running But Not Cooling — Check These 8 Things Before You Call a Tech"
+seo_title: "AC Running But Not Cooling? 8 Things to Check First"
 description: "AC running but the house won't cool? Work through these 8 simple checks before paying for a service call — from a former Florida HVAC contractor."
 category: HVAC
 date: 2026-06-06

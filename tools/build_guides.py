@@ -151,7 +151,8 @@ def load_guides():
             raw = f.read()
         data, content = parse_frontmatter(raw)
         guides.append({'slug': slug, 'data': data, 'content': content})
-    guides.sort(key=lambda g: g['data'].get('date', ''), reverse=True)
+    # date then slug, so builds come out identical on every machine
+    guides.sort(key=lambda g: (g['data'].get('date', ''), g['slug']), reverse=True)
     return guides
 
 
@@ -167,12 +168,68 @@ def format_date(s):
 
 
 def get_related(current, all_guides, max_count=4):
+    # Rotate through the category starting after the current guide, so every
+    # guide gets linked from its neighbours (no orphans), not just the newest 4.
     cat = current['data'].get('category', '')
-    same = [g for g in all_guides
-            if g['slug'] != current['slug'] and g['data'].get('category') == cat]
-    if len(same) >= 2:
-        return same[:max_count]
+    same = [g for g in all_guides if g['data'].get('category') == cat]
+    if len(same) >= 3:
+        i = next(n for n, g in enumerate(same) if g['slug'] == current['slug'])
+        rotated = same[i + 1:] + same[:i]
+        return rotated[:max_count]
     return [g for g in all_guides if g['slug'] != current['slug']][:max_count]
+
+
+# ── static guide cards for hub pages (crawlable without JavaScript) ──────────
+
+CATEGORY_ICONS = {
+    'Laser Engraving': '&#128262;', '3D Printing': '&#128424;&#65039;',
+    'CNC Routing': '&#9881;&#65039;', 'Machining': '&#128297;',
+    'Electronics': '&#9889;', 'General Fixes': '&#128295;', 'HVAC': '&#127777;&#65039;',
+}
+
+# Pages that aren't built from content/guides but belong in the guide lists.
+PINNED_GUIDES = [{
+    'slug': '3d-print-settings-why-3dprintlogpro',
+    'data': {
+        'title': '3D Print Settings — Why I Built 3DPrintLogPro',
+        'description': 'How a senior project deadline turned me into a maker — and why I built a tool to track every print setting automatically.',
+        'category': '3D Printing',
+        'url': '/forum/3d-print-settings-why-3dprintlogpro/',
+        'date': '2026-05-28',
+    },
+}]
+
+
+def render_guide_card(g):
+    d = g['data']
+    url = d.get('url') or '/guides/' + g['slug'] + '/'
+    cat = d.get('category', 'Guide')
+    return (
+        '<a href="' + url + '" class="guide-card">'
+        '<div class="guide-thumb">' + CATEGORY_ICONS.get(cat, '&#128203;') + '</div>'
+        '<div class="guide-body">'
+        '<div class="guide-tag">' + html.escape(cat) + '</div>'
+        '<h3>' + html.escape(d.get('title', g['slug'])) + '</h3>'
+        '<p>' + html.escape(d.get('description', '')) + '</p>'
+        '</div>'
+        '<div class="guide-footer"><span>' + html.escape(cat) + '</span>'
+        '<span>' + html.escape(format_date(d.get('date', ''))) + '</span></div>'
+        '</a>'
+    )
+
+
+def inject_cards(path, cards_html):
+    """Replace the content between <!-- GUIDES:START --> and <!-- GUIDES:END -->."""
+    with open(path, encoding='utf-8') as f:
+        page = f.read()
+    pattern = re.compile(r'(<!-- GUIDES:START -->)[\s\S]*?(<!-- GUIDES:END -->)')
+    if not pattern.search(page):
+        print(f"  WARNING: no GUIDES markers in {path}, skipped")
+        return
+    page = pattern.sub(lambda m: m.group(1) + '\n' + cards_html + '\n' + m.group(2), page)
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(page)
+    print(f"  Updated: {path}")
 
 
 def render_more_guides(guides):
@@ -241,7 +298,7 @@ def build_page(guide, all_guides):
         '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
         '<meta charset="UTF-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-        '<title>' + html.escape(title) + ' | TriedAndMade</title>\n'
+        '<title>' + html.escape(data.get('seo_title') or (title + ' | TriedAndMade')) + '</title>\n'
         '<meta name="description" content="' + esc_desc + '">\n'
         '<link rel="canonical" href="' + canonical + '">\n'
         '<meta property="og:title" content="' + esc_title + '">\n'
@@ -326,6 +383,13 @@ def main():
         with open(out_path, 'w', encoding='utf-8') as f:
             f.write(build_page(guide, guides))
         print(f"  Built: guides/{slug}/index.html")
+
+    hub_list = sorted(guides + PINNED_GUIDES,
+                      key=lambda g: g['data'].get('date', ''), reverse=True)
+    inject_cards(os.path.join(GUIDES_OUT, 'index.html'),
+                 '\n'.join(render_guide_card(g) for g in hub_list))
+    inject_cards('index.html',
+                 '\n'.join(render_guide_card(g) for g in (PINNED_GUIDES + guides)[:3]))
 
     with open(SITEMAP, 'w', encoding='utf-8') as f:
         f.write(build_sitemap(guides))

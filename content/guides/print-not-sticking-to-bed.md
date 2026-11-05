@@ -1,5 +1,6 @@
 ---
 title: "3D Print Not Sticking to the Bed? Fix It in Order, Not at Random"
+seo_title: "3D Print Not Sticking to the Bed? Fix It in Order"
 category: "3D Printing"
 description: "First layer won't stick? Here are the five causes in order of likelihood — and the one habit that keeps the problem from coming back."
 author: "Danny"

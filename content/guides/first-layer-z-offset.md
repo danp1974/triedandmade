@@ -1,7 +1,8 @@
 ---
 title: "First Layer Too Squished or Too High? How to Read It and Fix Your Z-Offset"
+seo_title: "First Layer Too Squished or Too High? Fix Your Z-Offset"
 category: "3D Printing"
-description: "Your first layer tells you exactly what's wrong — if you know how to read it. Here's how to dial in Z-offset, fix elephant's foot, and stop re-leveling every other print."
+description: "Your first layer tells you exactly what's wrong, if you know how to read it. Dial in Z-offset, fix elephant's foot, and stop re-leveling."
 author: "Danny"
 date: "2026-06-14"
 ---

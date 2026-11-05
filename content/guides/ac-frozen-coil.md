@@ -1,5 +1,6 @@
 ---
 title: "My AC Has Ice on It — Why Is My Coil Frozen and How Do I Fix It?"
+seo_title: "Ice on Your AC? Why the Coil Freezes and How to Fix It"
 description: "Ice on your AC? Here's why an evaporator coil freezes, how to thaw it safely, and what to check before calling a tech."
 category: HVAC
 date: 2026-06-06

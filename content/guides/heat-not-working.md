@@ -1,5 +1,6 @@
 ---
 title: "My Heat Isn't Working — Check These 7 Things Before You Call a Tech"
+seo_title: "Heat Not Working? 7 Things to Check Before Calling a Tech"
 description: "Heat not working? 7 checks for Florida heat pumps, electric strip heat, and gas furnaces before you call a tech."
 category: HVAC
 date: 2026-06-06

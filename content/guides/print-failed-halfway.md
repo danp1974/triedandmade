@@ -1,7 +1,8 @@
 ---
 title: "Why Did My 3D Print Fail Halfway Through? Read the Wreckage"
+seo_title: "Why Did My 3D Print Fail Halfway Through?"
 category: "3D Printing"
-description: "A print that dies at hour 9 left evidence behind. Spaghetti, a shifted layer, a clean stop — each failure looks different and points to a different cause. Here's how to read it."
+description: "A print that dies at hour 9 leaves evidence. Spaghetti, a shifted layer, a clean stop: each points to a different cause. Here's how to read it."
 author: "Danny"
 date: "2026-06-14"
 ---

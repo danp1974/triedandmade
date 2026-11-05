@@ -1,7 +1,8 @@
 ---
 title: "Under-Extrusion: Gaps, Thin Walls, and a Clicking Extruder — Fixed in Order"
+seo_title: "Under-Extrusion: Gaps, Thin Walls, and a Clicking Extruder"
 category: "3D Printing"
-description: "Gaps between lines, walls you can see through, an extruder that clicks like a turn signal — under-extrusion has six causes and they're easy to tell apart. Work the list."
+description: "Gaps between lines, see-through walls, a clicking extruder: under-extrusion has six causes and they're easy to tell apart. Work the list."
 author: "Danny"
 date: "2026-06-14"
 ---

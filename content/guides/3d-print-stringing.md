@@ -1,7 +1,8 @@
 ---
 title: "3D Print Stringing: How to Actually Fix It (Not Just Hide It)"
+seo_title: "3D Print Stringing: How to Actually Fix It"
 category: "3D Printing"
-description: "Spider webs between every part of your print? Stringing comes down to four causes. Here's how to fix them in order — including the retraction numbers nobody gives you."
+description: "Spider webs between every part of your print? Stringing comes down to four causes. Here's how to fix them in order, with real retraction numbers."
 author: "Danny"
 date: "2026-06-14"
 ---

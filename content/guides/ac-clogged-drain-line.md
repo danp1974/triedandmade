@@ -1,5 +1,6 @@
 ---
 title: "My AC Shut Off and Won't Come Back On — How to Check and Clear a Clogged Drain Line"
+seo_title: "AC Shut Off and Won't Restart? Check for a Clogged Drain"
 description: "AC shut off and won't restart? In Florida it's often a clogged condensate drain line. Here's how to find and clear it in about 15 minutes."
 category: HVAC
 date: 2026-06-06
