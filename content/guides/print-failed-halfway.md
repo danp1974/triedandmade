@@ -43,6 +43,7 @@ The print stops getting plastic but the printer keeps moving — you come back t
 - **The spool tangled.** A loop slipped under another loop on the spool and pulled tight until the extruder couldn't win. This is almost always self-inflicted — it happens when a loose end was let go during a filament change. Keep the end clipped to the spool, always, and use a spool holder that turns freely.
 - **Heat creep clog:** the hotend slowly jammed mid-print, usually on long prints with lots of slow sections. Filament softened too high up in the hotend and stuck. Check that the hotend cooling fan (not the part fan — the one on the heatsink) is actually spinning; a dying heatsink fan is the #1 cause. A cold pull clears the clog; replacing the fan stops it from coming back.
 - **Ground-down filament:** look at the filament at the extruder — if there's a chewed divot, the extruder gear ground through it after the clog started. Clear the clog, snip past the damage, and brush the gear teeth clean.
+- **It didn't stop, it thinned out.** If the plastic kept coming but got weak (gaps, see-through walls, a clicking extruder), that's under-extrusion, and it has its own [step-by-step guide](/guides/under-extrusion/).
 
 ## 4. It Just... Stopped. Cleanly.
 

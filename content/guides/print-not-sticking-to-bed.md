@@ -39,6 +39,8 @@ Adjust your Z-offset in 0.02–0.05 mm steps while the first layer is printing �
 
 Adjusting the Z-offset value in the positive direction will move the nozzle away from the bed; decreasing the Z-offset will bring the nozzle closer to the bed.
 
+If the first layer looks right but you're still seeing gaps between lines or thin, see-through walls higher up in the print, that's not a bed problem. That's under-extrusion, and it has its own [step-by-step guide](/guides/under-extrusion/).
+
 One more thing: if you're re-leveling constantly, the leveling isn't the problem. On the Ender 5 Plus, the bed rides on dual lead screws — if those get out of sync, no amount of corner-leveling will ever hold. Check the mechanics before you blame the settings. There are several printable jigs available on sites like [Thingiverse](https://www.thingiverse.com/) and [Printables](https://www.printables.com/) that can help align dual lead screws.
 
 ## 3. Bed Temp Too Low — or a Draft You Haven't Noticed

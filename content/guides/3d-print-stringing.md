@@ -44,6 +44,8 @@ I'm in Florida. Leaving a spool out on the printer for two weeks here is the sam
 
 If your prints got stringier slowly over weeks with no settings changes — it's this one. Dry the spool before you touch a single setting.
 
+Wet filament can starve the nozzle too. If you're also seeing gaps or thin walls along with the strings, see [Under-Extrusion](/guides/under-extrusion/).
+
 ## 4. Travel Settings Are Letting It Happen
 
 Two slicer settings reduce how much ooze ever reaches your print:

@@ -2,7 +2,8 @@
 """
 Build static HTML guide pages from content/guides/*.md.
 Run from the web root (triedandmade/):
-    python tools/build_guides.py
+    python tools/build_guides.py               (also rewrites sitemap.xml + robots.txt)
+    python tools/build_guides.py --no-sitemap  (what Cloudflare Pages runs on deploy)
 
 Idempotent: safe to re-run after any new guide is published.
 Requires: pip install markdown
@@ -10,6 +11,7 @@ Requires: pip install markdown
 import html
 import os
 import re
+import sys
 from datetime import date
 
 try:
@@ -205,7 +207,7 @@ def render_guide_card(g):
     url = d.get('url') or '/guides/' + g['slug'] + '/'
     cat = d.get('category', 'Guide')
     return (
-        '<a href="' + url + '" class="guide-card">'
+        '<a href="' + url + '" class="guide-card" data-category="' + html.escape(cat, quote=True) + '">'
         '<div class="guide-thumb">' + CATEGORY_ICONS.get(cat, '&#128203;') + '</div>'
         '<div class="guide-body">'
         '<div class="guide-tag">' + html.escape(cat) + '</div>'
@@ -391,13 +393,18 @@ def main():
     inject_cards('index.html',
                  '\n'.join(render_guide_card(g) for g in (PINNED_GUIDES + guides)[:3]))
 
-    with open(SITEMAP, 'w', encoding='utf-8') as f:
-        f.write(build_sitemap(guides))
-    print(f"  Built: {SITEMAP}")
+    # Cloudflare Pages runs this with --no-sitemap on every deploy, so the
+    # committed sitemap.xml and robots.txt are served exactly as they are.
+    if '--no-sitemap' in sys.argv[1:]:
+        print(f"  Skipped: {SITEMAP}, {ROBOTS} (--no-sitemap)")
+    else:
+        with open(SITEMAP, 'w', encoding='utf-8') as f:
+            f.write(build_sitemap(guides))
+        print(f"  Built: {SITEMAP}")
 
-    with open(ROBOTS, 'w', encoding='utf-8') as f:
-        f.write(build_robots())
-    print(f"  Built: {ROBOTS}")
+        with open(ROBOTS, 'w', encoding='utf-8') as f:
+            f.write(build_robots())
+        print(f"  Built: {ROBOTS}")
 
     print("Done.")
 
